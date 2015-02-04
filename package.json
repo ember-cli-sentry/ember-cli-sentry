@@ -1,5 +1,5 @@
 {
-  "name": "ember-cli-raven",
+  "name": "ember-cli-sentry",
   "version": "0.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
@@ -35,7 +35,11 @@
     "glob": "^4.0.5"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "getsentry",
+    "sentry",
+    "ravenjs",
+    "raven"
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
