@@ -22,6 +22,14 @@ var ENV = {
 }
 ```
 
+## Content Security Policy
+
+To allow Ravenjs to work properly, you need to add an entry to `ENV.contentSecurityPolicy`:
+
+```
+"img-src": "data: app.getsentry.com",
+```
+
 ## Trapping exceptions
 
 ember-cli-sentry will trap exceptions within `Ember.run` loop and unhandled RSVP failures.

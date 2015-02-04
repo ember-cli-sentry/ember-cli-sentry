@@ -1,7 +1,8 @@
 {
   "name": "ember-cli-sentry",
   "version": "1.0.1",
-  "description": "ember-cli addon adding Sentry support.",
+  "description": "ember-cli addon adding Sentry support",
+  "author": "Damien Caselli <damien.caselli@gmail.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,11 +12,16 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damiencaselli/ember-cli-sentry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/damiencaselli/ember-cli-sentry/issues"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.0",
