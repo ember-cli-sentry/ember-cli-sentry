@@ -1,25 +1,27 @@
-# Ember-cli-sentry
+Ember-cli-sentry
+================
 
-This README outlines the details of collaborating on this Ember addon.
+An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
-## Installation
+## Install
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+From any ember-cli application, run `ember install:addon ember-cli-sentry`.
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+ember-cli-sentry expects to find a `sentry` key in _ENV_.
 
-## Running Tests
+```
+var ENV = {
+  /* rest of the conf */
+  sentry: {
+    dsn: 'https://dsn_key@app.getsentry.com/app_id',
+    version: '1.1.16',
+    whitelistUrls: [ 'localhost:4200', 'site.local' ]
+  }
+}
+```
 
-* `ember test`
-* `ember test --server`
+## Licence
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+MIT
