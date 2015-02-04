@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import { initialize } from 'ember-cli-raven/initializers/raven-setup';
+import { initialize } from 'ember-cli-sentry/initializers/sentry-setup';
 
 var container, application;
 
-module('RavenSetupInitializer', {
+module('SentrySetupInitializer', {
   setup: function() {
     Ember.run(function() {
       application = Ember.Application.create();

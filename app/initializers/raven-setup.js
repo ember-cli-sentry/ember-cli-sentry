@@ -24,6 +24,6 @@ export function initialize() {
 }
 
 export default {
-  name: 'raven-setup',
+  name: 'sentry-setup',
   initialize: initialize
 };
