@@ -41,6 +41,8 @@ Here is a way to trap routing errors:
 ```javascript
 // routes/application.js
 
+/* global Raven */
+
 export default Ember.Route.extend({
   actions: {
     error: function(err){
@@ -50,6 +52,8 @@ export default Ember.Route.extend({
   }
 });
 ```
+
+Installing this addon will expose Raven globally, you should therefore declare it to `jshint`.
 
 ## Licence
 
