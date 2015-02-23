@@ -17,7 +17,8 @@ var ENV = {
   sentry: {
     dsn: 'https://dsn_key@app.getsentry.com/app_id',
     version: '1.1.16',
-    whitelistUrls: [ 'localhost:4200', 'site.local' ]
+    whitelistUrls: [ 'localhost:4200', 'site.local' ],
+    development: false // Set to true, to disable while developing
   }
 }
 ```
