@@ -7,7 +7,7 @@ module.exports = {
 
   contentFor: function(type, config){
     if (type === 'body') {
-      return '<script src="//cdn.ravenjs.com/' + config.sentry.version + '/jquery,native/raven.min.js"></script>';
+      return '<script src="' + config.sentry.cdn + '/' + config.sentry.version + '/jquery,native/raven.min.js"></script>';
     }
   }
 

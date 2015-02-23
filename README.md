@@ -15,7 +15,7 @@ ember-cli-sentry expects to find a `sentry` key in _ENV_.
 var ENV = {
   /* rest of the conf */
   sentry: {
-    cdn: '//cdn.ravenjs.com'
+    cdn: '//cdn.ravenjs.com',
     dsn: 'https://dsn_key@app.getsentry.com/app_id',
     version: '1.1.16',
     whitelistUrls: [ 'localhost:4200', 'site.local' ]
