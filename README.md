@@ -15,6 +15,7 @@ ember-cli-sentry expects to find a `sentry` key in _ENV_.
 var ENV = {
   /* rest of the conf */
   sentry: {
+    skipCdn: false, // skip loading from cdn
     cdn: '//cdn.ravenjs.com',
     dsn: 'https://dsn_key@app.getsentry.com/app_id',
     version: '1.1.16',
