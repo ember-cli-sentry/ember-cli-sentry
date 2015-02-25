@@ -6,8 +6,8 @@ module.exports = {
   name: 'ember-cli-sentry',
 
   contentFor: function(type, config){
-    if (type === 'body') {
-      return '<script src="//cdn.ravenjs.com/' + config.sentry.version + '/jquery,native/raven.min.js"></script>';
+    if (type === 'body' && !config.sentry.skipCdn) {
+      return '<script src="' + config.sentry.cdn + '/' + config.sentry.version + '/jquery,native/raven.min.js"></script>';
     }
   }
 
