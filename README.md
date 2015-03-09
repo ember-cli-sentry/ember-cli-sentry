@@ -20,6 +20,7 @@ var ENV = {
     dsn: 'https://dsn_key@app.getsentry.com/app_id',
     version: '1.1.16',
     whitelistUrls: [ 'localhost:4200', 'site.local' ],
+    release: 'd931e759f47267da6e0a65b18ce9e403fc93dab8', // Pass release-parameter to Sentry
     development: false // Set to true, to disable while developing
   }
 }

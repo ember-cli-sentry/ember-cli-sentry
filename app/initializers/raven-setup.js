@@ -12,7 +12,8 @@ export function initialize() {
   var _onerror;
 
   Raven.config(config.sentry.dsn, {
-    whitelistUrls: config.sentry.whitelistUrls
+    whitelistUrls: config.sentry.whitelistUrls,
+    release: config.sentry.release
   }).install();
 
   _onerror = Ember.onerror;
