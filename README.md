@@ -37,7 +37,7 @@ To allow Ravenjs to work properly, you need to add an entry to `ENV.contentSecur
 
 ember-cli-sentry will trap exceptions within `Ember.run` loop and unhandled RSVP failures.
 
-Since one will most likely implement his own ApplicationRoute error, I didn't bother adding a mixin for it.
+Since one will most likely implement their own ApplicationRoute error, I didn't bother adding a mixin for it.
 
 Here is a way to trap routing errors:
 
