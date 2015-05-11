@@ -23,8 +23,10 @@ export function initialize() {
     }
   }
 
-  Ember.RSVP.configure('onerror', function(error){
-    Raven.captureException(error);
+  Ember.RSVP.on('error', function(error){
+    if(error !== undefined){
+      Raven.captureException(error);
+    }
   });
 }
 
