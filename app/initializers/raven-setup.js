@@ -12,6 +12,7 @@ export function initialize() {
   var _onerror;
 
   Raven.config(config.sentry.dsn, {
+    release: config.APP.version,
     whitelistUrls: config.sentry.whitelistUrls
   }).install();
 
