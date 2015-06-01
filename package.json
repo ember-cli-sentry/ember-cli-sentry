@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-sentry",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ember-cli addon adding Sentry support",
   "author": "Damien Caselli <damien.caselli@gmail.com>",
   "directories": {
