@@ -15,20 +15,6 @@ export function initialize() {
     release: config.APP.version,
     whitelistUrls: config.sentry.whitelistUrls
   }).install();
-
-  _onerror = Ember.onerror;
-  Ember.onerror = function(error){
-    Raven.captureException(error);
-    if (typeof _onerror === 'function') {
-      _onerror.call(this, error);
-    }
-  }
-
-  Ember.RSVP.on('error', function(error){
-    if(error !== undefined){
-      Raven.captureException(error);
-    }
-  });
 }
 
 export default {
