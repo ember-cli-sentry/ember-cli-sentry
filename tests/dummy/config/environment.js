@@ -16,6 +16,20 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    sentry: {
+      development: true,
+      skipCdn: false,
+      cdn: '//cdn.ravenjs.com',
+      dsn: 'https://dummykey@app.getsentry.com/dummyproject',
+      version: '1.1.19',
+      whitelistUrls: [ ]
+    },
+
+    contentSecurityPolicy: {
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' cdn.ravenjs.com",
+      'img-src': "data: app.getsentry.com"
     }
   };
 
