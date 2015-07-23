@@ -58,7 +58,7 @@ Installing this addon will expose Raven globally, you should therefore declare i
 
 ## Dependencies
 
-Uses 
+Uses [Raven.js Ember plugin](https://github.com/getsentry/raven-js).
 
 ## Licence
 
