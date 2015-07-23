@@ -5,7 +5,8 @@ import Ember from 'ember';
 
 export function initialize() {
   // Disable for development
-  if (Ember.get('config.sentry.development') === true) {
+
+  if (Ember.get(config, 'sentry.development') === true) {
     return;
   }
 
