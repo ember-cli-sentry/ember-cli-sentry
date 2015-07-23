@@ -3,9 +3,11 @@ Ember-cli-sentry
 
 An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
+Addon follows [ember 2.x project versioning](http://emberjs.com/blog/2015/06/16/ember-project-at-2-0.html).
+
 ## Install
 
-From any ember-cli application, run `ember install:addon ember-cli-sentry`.
+From any ember-cli application, run `ember install ember-cli-sentry`.
 
 ## Usage
 
@@ -17,8 +19,8 @@ var ENV = {
   sentry: {
     skipCdn: false, // skip loading from cdn
     cdn: '//cdn.ravenjs.com',
-    dsn: 'https://dsn_key@app.getsentry.com/app_id',
-    version: '1.1.16',
+    dsn: 'https://<key>@app.getsentry.com/<project>',
+    version: '1.1.19',
     whitelistUrls: [ 'localhost:4200', 'site.local' ],
     development: false // Set to true, to disable while developing
   }
@@ -27,11 +29,7 @@ var ENV = {
 
 ## Content Security Policy
 
-To allow Ravenjs to work properly, you need to add an entry to `ENV.contentSecurityPolicy`:
-
-```
-"img-src": "data: app.getsentry.com",
-```
+To allow Ravenjs to work properly, you need to add `"img-src": "data: app.getsentry.com"` to content security policies.
 
 ## Trapping exceptions
 
@@ -57,6 +55,10 @@ export default Ember.Route.extend({
 ```
 
 Installing this addon will expose Raven globally, you should therefore declare it to `jshint`.
+
+## Dependencies
+
+Uses 
 
 ## Licence
 
