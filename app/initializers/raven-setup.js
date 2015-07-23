@@ -5,11 +5,13 @@ import Ember from 'ember';
 
 export function initialize() {
   // Disable for development
-  if (config.sentry.development) {
+  if (Ember.get('config.sentry.development') === true) {
     return;
   }
 
-  var _onerror;
+  if (!config.sentry) {
+    throw new Error('`sentry` should be configured when not in development mode.');
+  }
 
   Raven.config(config.sentry.dsn, {
     release: config.APP.version,
