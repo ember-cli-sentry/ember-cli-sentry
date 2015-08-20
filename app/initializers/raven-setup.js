@@ -14,10 +14,17 @@ export function initialize() {
     throw new Error('`sentry` should be configured when not in development mode.');
   }
 
-  Raven.config(config.sentry.dsn, {
-    release: config.APP.version,
-    whitelistUrls: config.sentry.whitelistUrls
-  }).install();
+  var options = {};
+
+  options.whitelistUrls = config.sentry.whitelistUrls;
+
+  options.release = config.APP.version;
+
+  if (typeof config.sentry.dataCallback === 'function') {
+    options.dataCallback = config.sentry.dataCallback;
+  }
+
+  Raven.config(config.sentry.dsn, options).install();
 }
 
 export default {
