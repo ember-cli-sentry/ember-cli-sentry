@@ -3,9 +3,11 @@ Ember-cli-sentry
 
 An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
+Addon follows [ember 2.x project versioning](http://emberjs.com/blog/2015/06/16/ember-project-at-2-0.html).
+
 ## Install
 
-From any ember-cli application, run `ember install:addon ember-cli-sentry`.
+From any ember-cli application, run `ember install ember-cli-sentry`.
 
 ## Usage
 
@@ -17,8 +19,8 @@ var ENV = {
   sentry: {
     skipCdn: false, // skip loading from cdn
     cdn: '//cdn.ravenjs.com',
-    dsn: 'https://dsn_key@app.getsentry.com/app_id',
-    version: '1.1.16',
+    dsn: 'https://<key>@app.getsentry.com/<project>',
+    version: '1.1.19',
     whitelistUrls: [ 'localhost:4200', 'site.local' ],
     release: 'd931e759f47267da6e0a65b18ce9e403fc93dab8', // Pass release-parameter to Sentry
     development: false // Set to true, to disable while developing
@@ -28,17 +30,13 @@ var ENV = {
 
 ## Content Security Policy
 
-To allow Ravenjs to work properly, you need to add an entry to `ENV.contentSecurityPolicy`:
-
-```
-"img-src": "data: app.getsentry.com",
-```
+To allow Ravenjs to work properly, you need to add `"img-src": "data: app.getsentry.com"` to content security policies.
 
 ## Trapping exceptions
 
 ember-cli-sentry will trap exceptions within `Ember.run` loop and unhandled RSVP failures.
 
-Since one will most likely implement his own ApplicationRoute error, I didn't bother adding a mixin for it.
+Since one will most likely implement their own ApplicationRoute error, I didn't bother adding a mixin for it.
 
 Here is a way to trap routing errors:
 
@@ -58,6 +56,10 @@ export default Ember.Route.extend({
 ```
 
 Installing this addon will expose Raven globally, you should therefore declare it to `jshint`.
+
+## Dependencies
+
+Uses [Raven.js Ember plugin](https://github.com/getsentry/raven-js).
 
 ## Licence
 

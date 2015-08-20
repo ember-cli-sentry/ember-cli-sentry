@@ -1,23 +1,27 @@
+/* global Raven */
+
+import config from 'dummy/config/environment';
 import Ember from 'ember';
-import { initialize } from 'ember-cli-sentry/initializers/sentry-setup';
+import { initialize } from '../../../initializers/raven-setup';
+import { module, test } from 'qunit';
 
-var container, application;
+let registry, application;
 
-module('SentrySetupInitializer', {
-  setup: function() {
+module('Unit | Initializer | raven setup', {
+  beforeEach: function() {
     Ember.run(function() {
       application = Ember.Application.create();
-      container = application.__container__;
+      registry = application.registry;
       application.deferReadiness();
     });
   }
 });
 
 // Replace this with your real tests.
-test('it works', function() {
-  initialize(container, application);
+test('Specified Raven.js version is loaded properly', function(assert) {
+  assert.expect(2);
+  initialize(registry, application);
 
-  // you would normally confirm the results of the initializer here
-  ok(true);
+  assert.ok(Raven, 'Raven object should be loaded');
+  assert.strictEqual(Raven.VERSION, config.sentry.version, 'Loaded Raven.js version should match version specified in configuration');
 });
-
