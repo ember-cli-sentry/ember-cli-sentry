@@ -54,6 +54,8 @@ export default Ember.Route.extend({
 });
 ```
 
+*Note: remember that `error` event will only bubble if you `return true` (see error substate on [Ember guides](http://guides.emberjs.com/v1.13.0/routing/loading-and-error-substates/)).*
+
 Installing this addon will expose Raven globally, you should therefore declare it to `jshint`.
 
 ## Dependencies
