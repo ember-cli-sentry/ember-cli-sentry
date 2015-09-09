@@ -7,10 +7,12 @@ import { module, test } from 'qunit';
 
 let registry, application;
 
+const { run, Application } = Ember;
+
 module('Unit | Initializer | raven setup', {
-  beforeEach: function() {
-    Ember.run(function() {
-      application = Ember.Application.create();
+  beforeEach() {
+    run(function() {
+      application = Application.create();
       registry = application.registry;
       application.deferReadiness();
     });

@@ -22,8 +22,8 @@ module.exports = function(environment) {
       development: true,
       skipCdn: false,
       cdn: '//cdn.ravenjs.com',
-      dsn: 'https://dummykey@app.getsentry.com/dummyproject',
-      version: '1.1.19',
+      dsn: 'https://<dummykey>@app.getsentry.com/<dummyproject>',
+      version: '1.1.20',
       whitelistUrls: [ ]
     },
 
