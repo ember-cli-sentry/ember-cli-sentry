@@ -72,6 +72,7 @@ To sum up:
         sentry: {
           cdn: '//cdn.ravenjs.com/1.1.20/ember,jquery,native/raven.min.js',
           debug: true, // (default)
+          development: false, // (default)
           dsn: 'https://<dummykey>@app.getsentry.com/<dummyproject>',
           exposedPropertyName: 'logger', // (default)
           includePaths: [ ], // (default)
