@@ -19,12 +19,9 @@ module.exports = function(environment) {
     },
 
     sentry: {
+      debug: true,
       development: true,
-      skipCdn: false,
-      cdn: '//cdn.ravenjs.com',
-      dsn: 'https://<dummykey>@app.getsentry.com/<dummyproject>',
-      version: '1.1.20',
-      whitelistUrls: [ ]
+      dsn: 'https://<dummykey>@app.getsentry.com/<dummyproject>'
     },
 
     contentSecurityPolicy: {

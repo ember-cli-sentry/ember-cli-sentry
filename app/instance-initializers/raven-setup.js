@@ -3,7 +3,7 @@
 import Ember from 'ember';
 import config from '../config/environment';
 
-export function initialize(/* application */) {
+export function initialize() {
 
   // Disable for development
   if (Ember.get(config, 'sentry.development') === true) {
@@ -14,12 +14,21 @@ export function initialize(/* application */) {
     throw new Error('`sentry` should be configured when not in development mode.');
   }
 
-  const { dsn, whitelistUrls } = config.sentry;
+  const { debug = true, dsn, includePaths = [], whitelistUrls = [] } = config.sentry;
 
-  Raven.config(dsn, {
-    whitelistUrls,
-    release: config.APP.version
-  }).install();
+  try {
+    Raven.debug = debug;
+
+    Raven.config(dsn, {
+      includePaths,
+      whitelistUrls,
+      release: config.APP.version
+    })
+  } catch (e) {
+    return;
+  }
+
+  Raven.install();
 }
 
 export default {
