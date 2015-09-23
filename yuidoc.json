@@ -7,11 +7,6 @@
       "addon",
       "app"
     ],
-    "exclude": "tmp,dist,config,public,tests,vendor,node_modules,bower_components",
-    "outdir": "docs",
-    "themedir" : "node_modules/yuidoc-lucid-theme",
-    "helpers" : [
-      "node_modules/yuidoc-lucid-theme/helpers/helpers.js"
-    ]
+    "exclude": "tmp,dist,config,public,tests,vendor,node_modules,bower_components"
   }
 }
