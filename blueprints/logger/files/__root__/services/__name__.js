@@ -5,15 +5,17 @@ const { computed } = Ember;
 
 export default RavenLogger.extend({
 
-  isRavenUsable: computed(function() {
-    //
-  }).volatile(),
+  unhandledPromiseErrorMessage: '',
 
   captureException(error) {
-    //
+    this._super(...arguments);
   },
 
   captureMessage(message) {
-    //
+    return this._super(...arguments);
+  },
+
+  enableGlobalErrorCatching() {
+    return this._super(...arguments);
   }
 });
