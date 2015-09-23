@@ -5,7 +5,6 @@ import config from '../config/environment';
 
 export function initialize(application) {
 
-  // Disable for development
   if (Ember.get(config, 'sentry.development') === true) {
     return;
   }
@@ -14,7 +13,12 @@ export function initialize(application) {
     throw new Error('`sentry` should be configured when not in development mode.');
   }
 
-  const { debug = true, dsn, includePaths = [], whitelistUrls = [] } = config.sentry;
+  const {
+    dsn,
+    debug = true,
+    includePaths = [],
+    whitelistUrls = []
+  } = config.sentry;
 
   try {
     Raven.debug = debug;
