@@ -3,7 +3,7 @@
 import Ember from 'ember';
 import config from '../config/environment';
 
-export function initialize() {
+export function initialize(application) {
 
   // Disable for development
   if (Ember.get(config, 'sentry.development') === true) {
@@ -23,12 +23,20 @@ export function initialize() {
       includePaths,
       whitelistUrls,
       release: config.APP.version
-    })
+    });
   } catch (e) {
     return;
   }
 
   Raven.install();
+
+  const { globalErrorCatching = true } = config.sentry;
+
+  if (globalErrorCatching === true) {
+    const { serviceName = 'logger' } = config.sentry;
+    const lookupName = `service:${serviceName}`;
+    application.container.lookup(lookupName).enableGlobalErrorCatching();
+  }
 }
 
 export default {

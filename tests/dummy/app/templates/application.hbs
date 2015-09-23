@@ -1,3 +1,7 @@
 <h2>Welcome to ember-cli-sentry</h2>
 
 {{x-button afterClick=(action 'captureSomething')}}
+
+<button {{action 'navigateToNonExistingRoute'}}>This button will lead to nowhere</button>
+
+<button {{action 'callDelayedError'}}>This button will trigger a delayed rejected RSVP</button>

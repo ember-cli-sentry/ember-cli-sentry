@@ -1,8 +1,12 @@
 import Ember from 'ember';
 
-const { Service, computed } = Ember;
+const { RSVP, Service, computed } = Ember;
 
 export default Service.extend({
+
+  globalErrorCatchingInitialized: false,
+
+  unhandledPromiseErrorMessage: 'Unhandled Promise error detected',
 
   isRavenUsable: computed(function() {
     return !!(window.Raven && window.Raven.isSetup() === true);
@@ -23,5 +27,33 @@ export default Service.extend({
       console.log(message);
     }
     return true;
+  },
+
+  enableGlobalErrorCatching() {
+    if (this.get('isRavenUsable') && !this.get('globalErrorCatchingInitialized')) {
+      const logger = this;
+      let _oldOnError = Ember.onerror;
+
+      Ember.onerror = function(error) {
+        logger.captureException(error);
+        if (typeof _oldOnError === 'function') {
+          _oldOnError.call(this, error);
+        }
+      };
+
+      RSVP.on('error', (reason) => {
+        if (reason instanceof Error) {
+          this.captureException(reason, { extra: {
+            context: this.get('unhandledPromiseErrorMessage')
+          } });
+        } else {
+          this.captureMessage(this.get('unhandledPromiseErrorMessage'), {
+            extra: { reason }
+          });
+        }
+      });
+
+      this.set('globalErrorCatchingInitialized', true);
+    }
   }
 });

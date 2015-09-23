@@ -7,13 +7,8 @@ export default Component.extend({
   tagName: 'button',
 
   click() {
-    this.get('raven').captureMessage('Message captured from test component');
-
-    try {
-      this.get('raven').captureException(new Error('Message captured from test component'));
-    } catch (error) {
-      console.log(error.message);
-    }
+    this.get('logger').captureMessage('Message captured from test component');
+    this.get('logger').captureException(new Error('Message captured from test component'));
 
     this.attrs.afterClick('x-button clicked');
   }

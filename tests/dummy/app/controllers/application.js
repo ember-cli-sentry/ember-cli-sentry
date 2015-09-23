@@ -1,18 +1,25 @@
 import Ember from 'ember';
 
-const { Controller } = Ember;
+const { Controller, RSVP, run } = Ember;
 
 export default Controller.extend({
 
   actions: {
     captureSomething(something) {
-      this.get('raven').captureMessage(`"${something}" captured from ApplicationController`);
+      this.get('logger').captureMessage(`"${something}" captured from ApplicationController`);
+      this.get('logger').captureException(new Error('Exception captured from ApplicationController'));
+    },
 
-      try {
-        this.get('raven').captureException(new Error('Exception captured from ApplicationController'));
-      } catch (error) {
-        console.log(error.message);
-      }
+    navigateToNonExistingRoute() {
+      this.transitionToRoute('outer.space');
+    },
+
+    callDelayedError() {
+      new RSVP.Promise(function(resolve, reject) {
+        run.later(null, function() {
+          reject('delayed error');
+        }, 2000);
+      });
     }
   }
 });
