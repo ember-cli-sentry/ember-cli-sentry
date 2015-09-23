@@ -74,9 +74,84 @@ let Raven = Service.extend({
     if (this.get('isRavenUsable')) {
       window.Raven.captureMessage(...arguments);
     } else {
-      console.log(message);
+      console.error(message);
     }
     return true;
+  },
+
+  /**
+   * Add extra context to be included with all errors.
+   *
+   * @method setExtraContext
+   */
+  setExtraContext() {
+    if (this.get('isRavenUsable')) {
+      window.Raven.setExtraContext(...arguments);
+    }
+  },
+
+  /**
+   * Add tags to be included with all errors.
+   *
+   * @method setTagsContext
+   */
+  setTagsContext() {
+    if (this.get('isRavenUsable')) {
+      window.Raven.setTagsContext(...arguments);
+    }
+  },
+
+  /**
+   * Set the user context to be included with all errors.
+   *
+   * @method setUserContext
+   */
+  setUserContext() {
+    if (this.get('isRavenUsable')) {
+      window.Raven.setUserContext(...arguments);
+    }
+  },
+
+  /**
+   * Execute a function with the specified context, capturing any exceptions.
+   *
+   * @method context
+   * @param {Object} data
+   * @param {Function} fn
+   */
+  context(data, fn) {
+    if (this.get('isRavenUsable')) {
+      window.Raven.context(...arguments);
+    } else {
+      try {
+        fn();
+      } catch (e) {
+        this.captureException(e, data);
+      }
+    }
+  },
+
+  /**
+   * Return a function that will execute with the specified context, capturing
+   * any exceptions.
+   *
+   * @method wrap
+   * @param {Object} data
+   * @param {Function} fn
+   * @return {Function}
+   */
+  wrap(data, fn) {
+    if (this.get('isRavenUsable')) {
+      return window.Raven.wrap(...arguments);
+    } else {
+      return () => {
+        try {
+          fn();
+        } catch (e) {
+          this.captureException(e, data);
+        }
+      };
+    }
   },
 
   /**
