@@ -53,10 +53,14 @@ module.exports = function(environment) {
        * If Raven.js is not inlined in your code, this is
        * where you want to define it.
        *
+       * I recommend **not** using a build containing ember.js plugin (https://github.com/getsentry/raven-js/blob/master/plugins/ember.js)
+       * since setting `globalErrorCatching: true` will perform the same
+       * operation, safely.
+       *
        * @type {String}
        * @default undefined
        */
-      cdn: '//cdn.ravenjs.com/1.1.20/ember,jquery,native/raven.min.js',
+      cdn: '//cdn.ravenjs.com/1.1.22/raven.min.js',
 
       /*
        * The only mandatory parameter.
