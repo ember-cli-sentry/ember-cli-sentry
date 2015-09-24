@@ -114,6 +114,25 @@ let RavenService = Service.extend({
     }
 
     return this;
+  },
+
+  /**
+   * Runs a Raven method if it is available.
+   *
+   * @param  {String} methodName The method to call
+   * @param  {Array} ...optional Optional method arguments
+   * @return {any} Raven method return value or false
+   * @throws {Error} If an error is captured and thrown
+   */
+  callRaven(methodName, ...optional) {
+    if (this.get('isRavenUsable')) {
+      try {
+        return window.Raven[methodName].apply(window.Raven, ...optional);
+      } catch (error) {
+        this.captureException(error);
+        return false;
+      }
+    }
   }
 });
 
