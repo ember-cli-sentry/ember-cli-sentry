@@ -74,7 +74,7 @@ let RavenService = Service.extend({
     if (this.get('isRavenUsable')) {
       window.Raven.captureMessage(...arguments);
     } else {
-      console.log(message);
+      throw new Error(message);
     }
     return true;
   },
