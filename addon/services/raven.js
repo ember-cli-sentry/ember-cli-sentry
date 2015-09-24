@@ -11,11 +11,11 @@ const {
  *
  * You can simply extend or export this Service to use it in the application.
  *
- * @class Raven
+ * @class RavenService
  * @module ember-cli-sentry/services/raven
  * @extends Ember.Service
  */
-let Raven = Service.extend({
+let RavenService = Service.extend({
 
   /**
    * Global error catching definition status
@@ -117,4 +117,4 @@ let Raven = Service.extend({
   }
 });
 
-export default Raven;
+export default RavenService;

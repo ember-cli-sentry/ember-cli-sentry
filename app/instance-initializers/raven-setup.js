@@ -1,5 +1,3 @@
-/* global Raven */
-
 import Ember from 'ember';
 import config from '../config/environment';
 
@@ -21,9 +19,9 @@ export function initialize(application) {
   } = config.sentry;
 
   try {
-    Raven.debug = debug;
+    window.Raven.debug = debug;
 
-    Raven.config(dsn, {
+    window.Raven.config(dsn, {
       includePaths,
       whitelistUrls,
       release: config.APP.version
@@ -32,7 +30,7 @@ export function initialize(application) {
     return;
   }
 
-  Raven.install();
+  window.Raven.install();
 
   const { globalErrorCatching = true } = config.sentry;
 
