@@ -7,20 +7,40 @@ Docs available [here](https://damiencaselli.github.io/ember-cli-sentry/).
 
 ## What it does
 
-This add-on:
+This add-on does:
 
-* Enables safe use of Raven.js whether you are in development mode or not.
-* Injects a logger service to routes, components, controllers and models to access Raven object.
-* Provides a default logger service that should work for the vaste majority of people.
-* Is completely customizable.
+* Enable safe use of Raven.js whether you are in development mode or not.
+* Inject a logger service to routes, components, controllers and models to access Raven object.
+* Provide a default logger generator that should work for the vaste majority of people.
+* Provide rather complete customization.
+
+This add-on does **not**:
+
+* Generate the logger service for you.
+* Provide a Sentry key for testing.
 
 ## Install
 
 From any ember-cli application, run `ember install ember-cli-sentry`.
 
+Add-on will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
+
+The easiest way of doing it is to create a service only extending `ember-cli-sentry/services/raven`:
+
+```js
+// your-app/services/custom-logger.js
+export { default } from 'ember-cli-sentry/services/raven';
+```
+
+You can also use a generator `ember g logger <logger-name>`, which will generate a service called `<logger-name>` extending `ember-cli-sentry/services/raven` and exposing its methods and properties.
+
+Now that you have a dedicated service for Raven.js, let's configure it.
+
 ## Configuration
 
 ### TLDR
+
+You have a service named `logger` that extends `ember-cli-sentry/services/raven`.
 
 ```js
 // config/environment.js
@@ -70,7 +90,7 @@ module.exports = function(environment) {
       dsn: 'https://<dummykey>@app.getsentry.com/<dummyproject>',
 
       /*
-       * Sets Raven.debug property
+       * Sets Raven.debug property when running `Raven.config`.
        *
        * @type {Boolean}
        * @default true
@@ -79,8 +99,7 @@ module.exports = function(environment) {
 
       /*
        * If set to true, this add-on will never initialize
-       * Raven object and capturing will be redirected
-       * to the console.
+       * Raven object and capturing will be handled by the logging service (redirected to the console if you use default service).
        *
        * @type {Boolean}
        * @default undefined
@@ -135,6 +154,11 @@ module.exports = function(environment) {
 ## Content Security Policy
 
 To allow Ravenjs to work properly, you need to add `"img-src": "data: app.getsentry.com"` to content security policies.
+
+## Example
+
+The dummy application in tests is a working example with a couple of logging here and there, and a default logger.  
+Since I do not provide a Sentry key for testing purpose, everything will be sent to console.
 
 ## Dependencies
 
