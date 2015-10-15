@@ -5,6 +5,10 @@ An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
 Docs available [here](https://damiencaselli.github.io/ember-cli-sentry/).
 
+## Important notice if you migrate from 1.x.x to 2.x
+
+Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-1.x.x-to-2.x) if you upgrade major version of ember-cli-sentry.
+
 ## What it does
 
 This add-on does:
