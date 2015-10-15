@@ -127,7 +127,7 @@ let RavenService = Service.extend({
   callRaven(methodName, ...optional) {
     if (this.get('isRavenUsable')) {
       try {
-        return window.Raven[methodName].apply(window.Raven, ...optional);
+        return window.Raven[methodName].call(window.Raven, ...optional);
       } catch (error) {
         this.captureException(error);
         return false;
