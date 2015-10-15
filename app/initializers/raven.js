@@ -1,6 +1,7 @@
 import config from '../config/environment';
 
-export function initialize(container, application) {
+export function initialize() {
+  const application = arguments[1] || arguments[0];
   const { serviceName = 'logger' } = config.sentry;
   const lookupName = `service:${serviceName}`;
   const { exposedPropertyName = 'logger' } = config.sentry;
