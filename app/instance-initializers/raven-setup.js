@@ -15,8 +15,13 @@ export function initialize(application) {
     dsn,
     debug = true,
     includePaths = [],
-    whitelistUrls = []
+    whitelistUrls = [],
+    serviceName = 'logger',
+    serviceReleaseProperty = 'release'
   } = config.sentry;
+
+  const lookupName = `service:${serviceName}`;
+  const service = application.container.lookup(lookupName);
 
   try {
     window.Raven.debug = debug;
@@ -24,7 +29,7 @@ export function initialize(application) {
     window.Raven.config(dsn, {
       includePaths,
       whitelistUrls,
-      release: config.APP.version
+      release: service.get(serviceReleaseProperty) || config.APP.version
     });
   } catch (e) {
     return;
@@ -35,9 +40,7 @@ export function initialize(application) {
   const { globalErrorCatching = true } = config.sentry;
 
   if (globalErrorCatching === true) {
-    const { serviceName = 'logger' } = config.sentry;
-    const lookupName = `service:${serviceName}`;
-    application.container.lookup(lookupName).enableGlobalErrorCatching();
+    service.enableGlobalErrorCatching();
   }
 }
 
