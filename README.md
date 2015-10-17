@@ -161,8 +161,7 @@ To allow Ravenjs to work properly, you need to add `"img-src": "data: app.getsen
 
 ## Example
 
-The dummy application in tests is a working example with a couple of logging here and there, and a default logger.  
-Since I do not provide a Sentry key for testing purpose, everything will be sent to console.
+The dummy application in tests is a working example with a couple of logging here and there, and a default logger.
 
 ## Dependencies
 
