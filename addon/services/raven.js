@@ -67,7 +67,7 @@ let RavenService = Service.extend({
    * Tries to have Raven capture message, or send it to console.
    *
    * @method captureMessage
-   * @param {String} message The message to capture
+   * @param  {String} message The message to capture
    * @return {Boolean}
    */
   captureMessage(message) {
@@ -89,9 +89,13 @@ let RavenService = Service.extend({
   enableGlobalErrorCatching() {
     if (this.get('isRavenUsable') && !this.get('globalErrorCatchingInitialized')) {
       const logger = this;
-      let _oldOnError = Ember.onerror;
+      const _oldOnError = Ember.onerror;
 
       Ember.onerror = function(error) {
+        if (logger.ignoreError(reason)) {
+          return;
+        }
+
         logger.captureException(error);
         if (typeof _oldOnError === 'function') {
           _oldOnError.call(this, error);
@@ -99,6 +103,10 @@ let RavenService = Service.extend({
       };
 
       RSVP.on('error', (reason) => {
+        if (logger.ignoreError(reason)) {
+          return;
+        }
+
         if (reason instanceof Error) {
           this.captureException(reason, { extra: {
             context: this.get('unhandledPromiseErrorMessage')
@@ -114,6 +122,18 @@ let RavenService = Service.extend({
     }
 
     return this;
+  },
+
+  /**
+   * Hook that allows error filtering in global
+   * error cacthing methods.
+   *
+   * @method ignoreError
+   * @param  {Error} error
+   * @return {Boolean}
+   */
+  ignoreError(error) {
+    return false;
   },
 
   /**
