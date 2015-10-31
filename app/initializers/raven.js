@@ -2,9 +2,9 @@ import config from '../config/environment';
 
 export function initialize() {
   const application = arguments[1] || arguments[0];
-  const { serviceName = 'logger' } = config.sentry;
+  const { serviceName = 'raven' } = config.sentry;
   const lookupName = `service:${serviceName}`;
-  const { exposedPropertyName = 'logger' } = config.sentry;
+  const { exposedPropertyName = 'raven' } = config.sentry;
 
   application.inject('route', exposedPropertyName, lookupName);
   application.inject('component', exposedPropertyName, lookupName);

@@ -16,7 +16,7 @@ export function initialize(application) {
     debug = true,
     includePaths = [],
     whitelistUrls = [],
-    serviceName = 'logger',
+    serviceName = 'raven',
     serviceReleaseProperty = 'release'
   } = config.sentry;
 

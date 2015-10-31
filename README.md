@@ -14,13 +14,13 @@ Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-c
 This add-on does:
 
 * Enable safe use of Raven.js whether you are in development mode or not.
-* Inject a logger service to routes, components, controllers and models to access Raven object.
+* Inject a logging service to routes, components, controllers and models to access Raven object.
 * Provide a default logger generator that should work for the vaste majority of people.
 * Provide rather complete customization.
 
 This add-on does **not**:
 
-* Generate the logger service for you.
+* Generate the logging service for you.
 * Provide a Sentry key for testing.
 
 ## Install
@@ -44,7 +44,7 @@ Now that you have a dedicated service for Raven.js, let's configure it.
 
 ### TLDR
 
-You have a service named `logger` that extends `ember-cli-sentry/services/raven`.
+You have a service named `raven` that extends `ember-cli-sentry/services/raven`.
 
 ```js
 // config/environment.js
@@ -111,12 +111,12 @@ module.exports = function(environment) {
       development: false,
 
       /*
-       * Injects the logger service as this property.
+       * Injects the logging service as this property.
        *
        * @type {String}
-       * @default 'logger'
+       * @default 'raven'
        */
-      exposedPropertyName: 'logger',
+      exposedPropertyName: 'raven',
 
       /*
        * If set to true, add-on will try to have Ember.onerror
@@ -139,9 +139,9 @@ module.exports = function(environment) {
        * Service used to interface with Raven.
        *
        * @type {String}
-       * @default 'logger'
+       * @default 'raven'
        */
-      serviceName: 'logger',
+      serviceName: 'raven',
 
       /*
        * Raven.js option.

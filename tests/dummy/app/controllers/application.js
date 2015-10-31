@@ -6,8 +6,8 @@ export default Controller.extend({
 
   actions: {
     captureSomething(something) {
-      this.get('logger').captureMessage(`"${something}" captured from ApplicationController`);
-      this.get('logger').captureException(new Error('Exception captured from ApplicationController'));
+      this.get('raven').captureMessage(`"${something}" captured from ApplicationController`);
+      this.get('raven').captureException(new Error('Exception captured from ApplicationController'));
     },
 
     navigateToNonExistingRoute() {
