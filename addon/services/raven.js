@@ -92,7 +92,7 @@ let RavenService = Service.extend({
       const _oldOnError = Ember.onerror;
 
       Ember.onerror = function(error) {
-        if (logger.ignoreError(reason)) {
+        if (logger.ignoreError(error)) {
           return;
         }
 
@@ -132,7 +132,7 @@ let RavenService = Service.extend({
    * @param  {Error} error
    * @return {Boolean}
    */
-  ignoreError(error) {
+  ignoreError() {
     return false;
   },
 
