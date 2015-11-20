@@ -75,7 +75,8 @@ module.exports = function(environment) {
 
       /*
        * If Raven.js is not inlined in your code, this is
-       * where you want to define it.
+       * where you want to define it. 
+       * Please add only the CDN host here, as the whole URL gets configured by the plugin.
        *
        * I recommend **not** using a build containing ember.js plugin (https://github.com/getsentry/raven-js/blob/master/plugins/ember.js)
        * since setting `globalErrorCatching: true` will perform the same
@@ -84,7 +85,14 @@ module.exports = function(environment) {
        * @type {String}
        * @default undefined
        */
-      cdn: '//cdn.ravenjs.com/1.1.22/raven.min.js',
+      cdn: '//cdn.ravenjs.com',
+      
+      /*
+       * The Raven version you want to use.
+       *
+       * @type {String}
+       */
+      version: '1.3.0',
 
       /*
        * The only mandatory parameter.
