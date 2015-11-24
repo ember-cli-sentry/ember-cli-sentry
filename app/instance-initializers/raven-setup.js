@@ -17,7 +17,8 @@ export function initialize(application) {
     includePaths = [],
     whitelistUrls = [],
     serviceName = 'raven',
-    serviceReleaseProperty = 'release'
+    serviceReleaseProperty = 'release',
+    ravenOptions = {}
   } = config.sentry;
 
   const lookupName = `service:${serviceName}`;
@@ -26,11 +27,14 @@ export function initialize(application) {
   try {
     window.Raven.debug = debug;
 
-    window.Raven.config(dsn, {
+    // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
+    const ravenConfig = Object.assign({
       includePaths,
       whitelistUrls,
       release: service.get(serviceReleaseProperty) || config.APP.version
-    });
+    }, ravenOptions);
+
+    window.Raven.config(dsn, ravenConfig);
   } catch (e) {
     return;
   }

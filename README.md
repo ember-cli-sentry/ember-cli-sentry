@@ -15,7 +15,7 @@ This add-on does:
 
 * Enable safe use of Raven.js whether you are in development mode or not.
 * Inject a logging service to routes, components, controllers and models to access Raven object.
-* Provide a default logger generator that should work for the vaste majority of people.
+* Provide a default logger generator that should work for the vast majority of people.
 * Provide rather complete customization.
 
 This add-on does **not**:
@@ -128,14 +128,6 @@ module.exports = function(environment) {
       globalErrorCatching: true,
 
       /*
-       * Raven.js option.
-       *
-       * @type {Array}
-       * @default []
-       */
-      includePaths: [],
-
-      /*
        * Service used to interface with Raven.
        *
        * @type {String}
@@ -149,7 +141,23 @@ module.exports = function(environment) {
        * @type {Array}
        * @default []
        */
-      whitelistUrls: []
+      includePaths: [],
+
+      /*
+       * Raven.js option.
+       *
+       * @type {Array}
+       * @default []
+       */
+      whitelistUrls: [],
+
+      /**
+       * Options to pass directly to Raven.js. Note: whitelistUrls and includePaths in this will take precedence
+       * over the above.
+       *
+       * @default {}
+      */
+      ravenOptions: {},
     }
   }
 }
