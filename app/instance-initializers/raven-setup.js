@@ -4,6 +4,7 @@ import config from '../config/environment';
 export function initialize(application) {
 
   if (Ember.get(config, 'sentry.development') === true) {
+    Ember.Logger.info('`sentry` is configured for development mode.');
     return;
   }
 
@@ -32,6 +33,7 @@ export function initialize(application) {
       release: service.get(serviceReleaseProperty) || config.APP.version
     });
   } catch (e) {
+    Ember.Logger.warn('Error during `sentry` initialization: ' + e);
     return;
   }
 
