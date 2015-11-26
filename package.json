@@ -1,12 +1,14 @@
 {
   "name": "ember-cli-sentry",
-  "version": "2.0.0-beta.6",
+  "version": "2.0.0",
   "description": "ember-cli addon adding Sentry support",
   "author": "Damien Caselli <damien.caselli@gmail.com>",
-  "contributors": [{
-    "name": "Dominik Schmidt",
-    "email": "dev@dominik-schmidt.de"
-  }],
+  "contributors": [
+    {
+      "name": "Dominik Schmidt",
+      "email": "dev@dominik-schmidt.de"
+    }
+  ],
   "directories": {
     "doc": "doc",
     "test": "tests"
