@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import RavenLogger from 'ember-cli-sentry/services/raven';
 
 export default RavenLogger.extend({
