@@ -1,21 +1,18 @@
-Ember-cli-sentry
+ember-cli-sentry
 ================
 
 An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
-Docs available [here](https://damiencaselli.github.io/ember-cli-sentry/).
+Docs are available [here](https://damiencaselli.github.io/ember-cli-sentry/).
 
-## Important notice if you migrate from 1.x.x to 2.x
-
-Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-1.x.x-to-2.x) if you upgrade major version of ember-cli-sentry.
-
-## What it does
+## What it does (and does not)
 
 This add-on does:
 
 * Enable safe use of Raven.js whether you are in development mode or not.
 * Inject a logging service to routes, components, controllers and models to access Raven object.
 * Provide a default logger generator that should work for the vast majority of people.
+* Add an **opt-out** bower dependency to ravenjs.
 * Provide rather complete customization.
 
 This add-on does **not**:
@@ -23,9 +20,16 @@ This add-on does **not**:
 * Generate the logging service for you.
 * Provide a Sentry key for testing.
 
+## Important notice if you migrate from 1.x.x to 2.x
+
+Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-1.x.x-to-2.x) if you upgrade major version of ember-cli-sentry.
+
 ## Install
 
 From any ember-cli application, run `ember install ember-cli-sentry`.
+
+_Note:Since **v2.1.2**, Raven bower component is automatically included by this addon.  
+If you want to use your own packaged version or the cdn option, you'll have to opt-out by removing it from bower dependencies._
 
 Add-on will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
 
@@ -44,7 +48,7 @@ Now that you have a dedicated service for Raven.js, let's configure it.
 
 ### TLDR
 
-You have a service named `raven` that extends `ember-cli-sentry/services/raven`.
+You already have a service named `raven` that extends `ember-cli-sentry/services/raven`.
 
 ```js
 // config/environment.js
@@ -84,7 +88,7 @@ module.exports = function(environment) {
        * @type {String}
        * @default undefined
        */
-      cdn: '//cdn.ravenjs.com/1.1.22/raven.min.js',
+      cdn: 'https://cdn.ravenjs.com/2.1.1/raven.min.js',
 
       /*
        * The only mandatory parameter.
@@ -165,7 +169,13 @@ module.exports = function(environment) {
 
 ## Content Security Policy
 
-To allow Ravenjs to work properly, you need to add `"img-src": "data: app.getsentry.com"` to content security policies.
+To allow Ravenjs to work properly, you need to add a couple of thing to the content security policy rules:
+
+```
+'script-src': "'self' 'unsafe-inline' 'unsafe-eval' cdn.ravenjs.com",
+'img-src': "data: app.getsentry.com",
+'connect-src': "'self' app.getsentry.com"
+```
 
 ## Example
 
