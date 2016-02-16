@@ -28,7 +28,7 @@ Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-c
 
 From any ember-cli application, run `ember install ember-cli-sentry`.
 
-_Note:Since **v2.1.2**, Raven bower component is automatically included by this addon.  
+_Note: Since **v2.1.2**, Raven bower component is automatically included by this addon.  
 If you want to use your own packaged version or the cdn option, you'll have to opt-out by removing it from bower dependencies._
 
 Add-on will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
@@ -77,7 +77,7 @@ module.exports = function(environment) {
 
     sentry: {
 
-      /*
+      /**
        * If Raven.js is not inlined in your code, this is
        * where you want to define it.
        *
@@ -90,14 +90,14 @@ module.exports = function(environment) {
        */
       cdn: 'https://cdn.ravenjs.com/2.1.1/raven.min.js',
 
-      /*
+      /**
        * The only mandatory parameter.
        *
        * @type {String}
        */
       dsn: 'https://<dummykey>@app.getsentry.com/<dummyproject>',
 
-      /*
+      /**
        * Sets Raven.debug property when running `Raven.config`.
        *
        * @type {Boolean}
@@ -105,7 +105,7 @@ module.exports = function(environment) {
        */
       debug: true,
 
-      /*
+      /**
        * If set to true, this add-on will never initialize
        * Raven object and capturing will be handled by the logging service (redirected to the console if you use default service).
        *
@@ -114,7 +114,7 @@ module.exports = function(environment) {
        */
       development: false,
 
-      /*
+      /**
        * Injects the logging service as this property.
        *
        * @type {String}
@@ -122,7 +122,7 @@ module.exports = function(environment) {
        */
       exposedPropertyName: 'raven',
 
-      /*
+      /**
        * If set to true, add-on will try to have Ember.onerror
        * and Ember.RSVP.on('error') captured by Raven.
        *
@@ -131,7 +131,7 @@ module.exports = function(environment) {
        */
       globalErrorCatching: true,
 
-      /*
+      /**
        * Service used to interface with Raven.
        *
        * @type {String}
@@ -139,7 +139,7 @@ module.exports = function(environment) {
        */
       serviceName: 'raven',
 
-      /*
+      /**
        * Raven.js option.
        *
        * @type {Array}
@@ -147,7 +147,7 @@ module.exports = function(environment) {
        */
       includePaths: [],
 
-      /*
+      /**
        * Raven.js option.
        *
        * @type {Array}
@@ -156,11 +156,12 @@ module.exports = function(environment) {
       whitelistUrls: [],
 
       /**
-       * Options to pass directly to Raven.js. Note: whitelistUrls and includePaths in this will take precedence
+       * Options to pass directly to Raven.js. Note: whitelistUrls and
+       * includePaths in this will take precedence
        * over the above.
        *
        * @default {}
-      */
+       */
       ravenOptions: {},
     }
   }
@@ -183,8 +184,8 @@ The dummy application in tests is a working example with a couple of logging her
 
 ## Dependencies
 
-[Raven.js](https://github.com/getsentry/raven-js).
+[Raven.js](https://github.com/getsentry/raven-js)
 
 ## Licence
 
-MIT
+[MIT](https://raw.githubusercontent.com/damiencaselli/ember-cli-sentry/master/LICENSE.md)
