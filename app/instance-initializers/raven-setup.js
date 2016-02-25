@@ -29,7 +29,7 @@ export function initialize(application) {
     window.Raven.debug = debug;
 
     // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
-    const ravenConfig = Object.assign({
+    const ravenConfig = Ember.merge({
       includePaths,
       whitelistUrls,
       release: service.get(serviceReleaseProperty) || config.APP.version
