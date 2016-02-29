@@ -1,5 +1,9 @@
 # ember-cli-sentry changelog
 
+### 2.3.1
+
+- Fix `application.container` deprecation notice ([#34](https://github.com/damiencaselli/ember-cli-sentry/issues/34)).
+
 ### 2.3.0
 
 - Upgrade `ember-cli` to 2.3.0.
