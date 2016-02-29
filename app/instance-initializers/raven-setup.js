@@ -23,7 +23,7 @@ export function initialize(application) {
   } = config.sentry;
 
   const lookupName = `service:${serviceName}`;
-  const service = application.container.lookup(lookupName);
+  const service = application.lookup(lookupName);
 
   try {
     window.Raven.debug = debug;
