@@ -19,7 +19,7 @@ module.exports = function(environment) {
     },
 
     sentry: {
-      cdn: 'https://cdn.ravenjs.com/2.1.1/raven.min.js',
+      cdn: 'https://cdn.ravenjs.com/2.2.0/raven.min.js',
       dsn: 'https://75642eb8f73e4d5595ac74d0617f121e@app.getsentry.com/55107',
       globalErrorCatching: false
     },
