@@ -88,7 +88,7 @@ module.exports = function(environment) {
        * @type {String}
        * @default undefined
        */
-      cdn: 'https://cdn.ravenjs.com/2.1.1/raven.min.js',
+      cdn: 'https://cdn.ravenjs.com/2.2.0/raven.min.js',
 
       /**
        * The only mandatory parameter.
