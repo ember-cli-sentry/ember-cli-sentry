@@ -178,6 +178,10 @@ To allow Ravenjs to work properly, you need to add a couple of thing to the cont
 'connect-src': "'self' app.getsentry.com"
 ```
 
+## Meaningless stack traces?
+
+See [this issue](https://github.com/damiencaselli/ember-cli-sentry/issues/28).
+
 ## Example
 
 The dummy application in tests is a working example with a couple of logging here and there, and a default logger.
