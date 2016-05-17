@@ -8,7 +8,9 @@ const assign = Ember.assign || Ember.merge;
 export function initialize(application) {
 
   if (Ember.get(config, 'sentry.development') === true) {
-    Ember.Logger.info('`sentry` is configured for development mode.');
+    if (Ember.get(config, 'sentry.debug') === true) {
+      Ember.Logger.info('`sentry` is configured for development mode.');
+    }
     return;
   }
 
