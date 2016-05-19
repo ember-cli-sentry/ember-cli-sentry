@@ -7,7 +7,7 @@ Docs are available [here](https://damiencaselli.github.io/ember-cli-sentry/).
 
 ## What it does (and does not)
 
-This add-on does:
+This addon does:
 
 * Enable safe use of Raven.js whether you are in development mode or not.
 * Inject a logging service to routes, components, controllers and models to access Raven object.
@@ -15,7 +15,7 @@ This add-on does:
 * Add an **opt-out** bower dependency to ravenjs.
 * Provide rather complete customization.
 
-This add-on does **not**:
+This addon does **not**:
 
 * Generate the logging service for you.
 * Provide a Sentry key for testing.
@@ -31,7 +31,7 @@ From any ember-cli application, run `ember install ember-cli-sentry`.
 _Note: Since **v2.1.2**, Raven bower component is automatically included by this addon.  
 If you want to use your own packaged version or the cdn option, you'll have to opt-out by removing it from bower dependencies._
 
-Add-on will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
+addon will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
 
 The easiest way of doing it is to create a service only extending `ember-cli-sentry/services/raven`:
 
@@ -83,7 +83,7 @@ module.exports = function(environment) {
        *
        * I recommend **not** using a build containing ember.js plugin (https://github.com/getsentry/raven-js/blob/master/plugins/ember.js)
        * since setting `globalErrorCatching: true` will perform the same
-       * operation, safely.
+       * operation, but safely.
        *
        * @type {String}
        * @default undefined
@@ -106,8 +106,8 @@ module.exports = function(environment) {
       debug: true,
 
       /**
-       * If set to true, this add-on will never initialize
-       * Raven object and capturing will be handled by the logging service (redirected to the console if you use default service).
+       * If set to true, it will prevent Raven.js from being initialized.
+       * Errors and logs will be logged to the console (default) instead of being reported by Raven.
        *
        * @type {Boolean}
        * @default undefined
@@ -123,7 +123,7 @@ module.exports = function(environment) {
       exposedPropertyName: 'raven',
 
       /**
-       * If set to true, add-on will try to have Ember.onerror
+       * If set to true, addon will try to have Ember.onerror
        * and Ember.RSVP.on('error') captured by Raven.
        *
        * @type {Boolean}
