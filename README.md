@@ -31,7 +31,7 @@ From any ember-cli application, run `ember install ember-cli-sentry`.
 _Note: Since **v2.1.2**, Raven bower component is automatically included by this addon.  
 If you want to use your own packaged version or the cdn option, you'll have to opt-out by removing it from bower dependencies._
 
-addon will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
+The addon will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
 
 The easiest way of doing it is to create a service only extending `ember-cli-sentry/services/raven`:
 
@@ -81,7 +81,8 @@ module.exports = function(environment) {
        * If Raven.js is not inlined in your code, this is
        * where you want to define it.
        *
-       * I recommend **not** using a build containing ember.js plugin (https://github.com/getsentry/raven-js/blob/master/plugins/ember.js)
+       * I recommend **not** using a build containing ember.js plugin
+       * (https://github.com/getsentry/raven-js/blob/master/plugins/ember.js)
        * since setting `globalErrorCatching: true` will perform the same
        * operation, but safely.
        *
@@ -107,7 +108,8 @@ module.exports = function(environment) {
 
       /**
        * If set to true, it will prevent Raven.js from being initialized.
-       * Errors and logs will be logged to the console (default) instead of being reported by Raven.
+       * Errors and logs will be logged to the console (default) instead of
+       * being reported by Raven.
        *
        * @type {Boolean}
        * @default undefined
