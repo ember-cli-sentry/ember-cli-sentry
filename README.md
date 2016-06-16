@@ -20,9 +20,19 @@ This addon does **not**:
 * Generate the logging service for you.
 * Provide a Sentry key for testing.
 
-## Important notice if you migrate from 1.x.x to 2.x
+## Upgrading
 
-Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-1.x.x-to-2.x) if you upgrade major version of ember-cli-sentry.
+## 1.xxx -> 2.x.x | 3.x.x
+
+Please have a look at [this wiki
+entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-1.x.x-to-2.x)
+if you upgrade major version of ember-cli-sentry.
+
+## 2.x.x -> 3.x.x
+
+Raven.js 3.0 introduces some potentially breaking changes. Please take a
+look at the [raven.js CHANGELOG](
+https://github.com/getsentry/raven-js/blob/master/CHANGELOG.md#300 )
 
 ## Install
 

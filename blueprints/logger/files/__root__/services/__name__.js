@@ -12,6 +12,10 @@ export default RavenLogger.extend({
     return this._super(...arguments);
   },
 
+  captureBreadcrumb(/*message, category, data, level*/) {
+    return this._super(...arguments);
+  },
+
   enableGlobalErrorCatching() {
     return this._super(...arguments);
   },
