@@ -5,6 +5,16 @@ import config from '../config/environment';
 // compatibility.
 const assign = Ember.assign || Ember.merge;
 
+const parseRegexErrors = function parseRegexErrors(ravenOptions) {
+  return Ember.get(ravenOptions, 'ignoreErrors').map((error) => {
+    if (error.startsWith('/') && error.endsWith('/')) {
+      return new RegExp(error.slice(1, error.length - 1));
+    }
+
+    return error;
+  });
+}
+
 export function initialize(application) {
 
   if (Ember.get(config, 'sentry.development') === true) {
@@ -28,6 +38,10 @@ export function initialize(application) {
     serviceReleaseProperty = 'release',
     ravenOptions = {}
   } = config.sentry;
+
+  if (Ember.get(ravenOptions, 'ignoreErrors.length')) {
+    Ember.set(ravenOptions, 'ignoreErrors', parseRegexErrors(ravenOptions));
+  }
 
   const lookupName = `service:${serviceName}`;
   const service = application.lookup(lookupName);
