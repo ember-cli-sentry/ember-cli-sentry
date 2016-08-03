@@ -20,6 +20,7 @@ export function initialize(application) {
 
   const {
     dsn,
+    environment,
     debug = true,
     includePaths = [],
     whitelistUrls = [],
@@ -36,6 +37,7 @@ export function initialize(application) {
 
     // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
     const ravenConfig = assign({
+      environment,
       includePaths,
       whitelistUrls,
       release: service.get(serviceReleaseProperty) || config.APP.version
