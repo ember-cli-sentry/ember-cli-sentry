@@ -40,7 +40,9 @@ The easiest way of doing it is to create a service only extending `ember-cli-sen
 export { default } from 'ember-cli-sentry/services/raven';
 ```
 
-You can also use a generator `ember g logger <logger-name>`, which will generate a service called `<logger-name>` extending `ember-cli-sentry/services/raven` and exposing its methods and properties.
+You can also use a generator `ember g logger <logger-name>`, which will generate a service called `<logger-name>` extending `ember-cli-sentry/services/raven` and exposing its methods and properties.  
+If you create the logger service that way, note that you must use the same name for the `serviceName` property.
+
 
 Now that you have a dedicated service for Raven.js, let's configure it.
 
