@@ -1,5 +1,11 @@
 # ember-cli-sentry changelog
 
+## 2.3.4
+
+- Upgrade ember-cli.
+- Update raven.js to 3.3.
+- Improve README.
+
 ## 2.3.3
 
 - Removed a possibly annoying log [#37](https://github.com/damiencaselli/ember-cli-sentry/pull/47).
