@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 
 module('Unit | Helper | parseRegexErrors');
 
-test('it returns an empty', function(assert) {
+test('it returns an empty array', function(assert) {
   let result = parseRegexErrors([]);
 
   assert.equal(result.length, 0);
@@ -21,7 +21,7 @@ test('it returns an empty', function(assert) {
   assert.equal(result.length, 0);
 });
 
-test('it returns the same content if no RegExp were found in the array', function(assert) {
+test('it does not modify basic strings', function(assert) {
   let errors = [
     'Error Message 401',
     'Error Message 404',
@@ -33,7 +33,7 @@ test('it returns the same content if no RegExp were found in the array', functio
   assert.deepEqual(result[1], errors[1]);
 });
 
-test('it recognize RegExp stored as a string', function(assert) {
+test('it converts string RegExp into RegExp', function(assert) {
   let errors = [
     'Error Message 401',
     '/Error Message .*/',
@@ -46,7 +46,7 @@ test('it recognize RegExp stored as a string', function(assert) {
   assert.deepEqual(result[1], /Error Message .*/);
 });
 
-test('it allows modifiers', function(assert) {
+test('it preserves the RegExp flags', function(assert) {
   let errors = [
     '/Error Message .*/gi',
     '/Error Message .*/ig',
@@ -64,7 +64,7 @@ test('it allows modifiers', function(assert) {
   assert.deepEqual(result[4], new RegExp('Error Message .*', 'm'));
 });
 
-test('it throw an error when a RegExp is invalid', function(assert) {
+test('it throws an error when a RegExp is invalid', function(assert) {
   assert.throws(parseRegexErrors([
     '/Error Message .*/foo',
   ]));
