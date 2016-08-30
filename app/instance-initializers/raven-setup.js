@@ -35,7 +35,7 @@ export function initialize(application) {
   }
 
   const lookupName = `service:${serviceName}`;
-  const service = application.lookup(lookupName);
+  const service = application.lookup ? application.lookup(lookupName) : application.container.lookup(lookupName);
 
   try {
     window.Raven.debug = debug;
