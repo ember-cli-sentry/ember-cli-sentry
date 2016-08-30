@@ -1,3 +1,7 @@
+## 2.4.1
+
+- Fix compatibility issue with Ember < 2
+
 ## 2.4.0
 
 - Parse RegExp in ignoreErrors [#51](https://github.com/damiencaselli/ember-cli-sentry/pull/51) [@gabz75](https://github.com/gabz75)
