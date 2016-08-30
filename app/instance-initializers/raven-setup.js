@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import config from '../config/environment';
+import { parseRegexErrors } from 'ember-cli-sentry/utils/parse-regex-errors';
 
 // Ember merge is deprecated as of 2.5, but we need to check for backwards
 // compatibility.
@@ -28,6 +29,10 @@ export function initialize(application) {
     serviceReleaseProperty = 'release',
     ravenOptions = {}
   } = config.sentry;
+
+  if (Ember.get(ravenOptions, 'ignoreErrors.length')) {
+    Ember.set(ravenOptions, 'ignoreErrors', parseRegexErrors(ravenOptions.ignoreErrors));
+  }
 
   const lookupName = `service:${serviceName}`;
   const service = application.lookup(lookupName);
