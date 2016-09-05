@@ -3,7 +3,8 @@ import Ember from 'ember';
 const {
   RSVP,
   Service,
-  computed
+  computed,
+  typeOf
 } = Ember;
 
 /**
@@ -97,7 +98,7 @@ let RavenService = Service.extend({
         }
 
         logger.captureException(error);
-        if (typeof _oldOnError === 'function') {
+        if (typeof(_oldOnError) === 'function') {
           _oldOnError.call(this, error);
         }
       };
@@ -107,12 +108,12 @@ let RavenService = Service.extend({
           return;
         }
 
-        if (reason instanceof Error) {
+        if (typeOf(reason) === 'error') {
           this.captureException(reason, { extra: {
             context: this.get('unhandledPromiseErrorMessage')
           } });
         } else {
-          this.captureMessage(this.get('unhandledPromiseErrorMessage'), {
+          this.captureMessage(this._extractMessage(reason), {
             extra: { reason }
           });
         }
@@ -122,6 +123,26 @@ let RavenService = Service.extend({
     }
 
     return this;
+  },
+
+  /**
+   * This private method tries to find a reasonable message when
+   * an unhandled promise does not reject to an error.
+   *
+   * @method _extractMessage
+   * @param  {any} reason
+   * @return {String}
+   */
+  _extractMessage(reason) {
+    const defaultMessage = this.get('unhandledPromiseErrorMessage');
+    switch (typeOf(reason)) {
+      case 'string':
+        return reason;
+      case 'object':
+        return reason.message || defaultMessage;
+      default:
+        return defaultMessage;
+    }
   },
 
   /**
