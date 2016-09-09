@@ -1,3 +1,7 @@
+## 2.4.2
+
+- Better message for rejected promises [#57](https://github.com/damiencaselli/ember-cli-sentry/pull/57) [@xcambar](https://github.com/xcambar)
+
 ## 2.4.1
 
 - Fix compatibility issue with Ember < 2
