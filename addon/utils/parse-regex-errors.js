@@ -1,3 +1,14 @@
+/**
+ * @module ember-cli-sentry/utils/parse-regex-errors
+ */
+
+/**
+ * Uniformize an array of mixed string patterns and RegExp objects by converting
+ * any String pattern to RegExp.
+ *
+ * @param {Array} errors Mixed string patterns and RegExp objects
+ * @return {Array}
+ */
 export function parseRegexErrors(errors) {
   if (!errors || errors.constructor !== Array) {
     return [];
