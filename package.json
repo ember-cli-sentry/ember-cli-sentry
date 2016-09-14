@@ -49,6 +49,8 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
+    "ink-docstrap": "^1.3.0",
+    "jsdoc": "^3.4.1",
     "loader.js": "^4.0.1"
   },
   "keywords": [
