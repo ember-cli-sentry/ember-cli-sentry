@@ -103,18 +103,23 @@ let RavenService = Service.extend({
         }
       };
 
-      RSVP.on('error', (reason) => {
+      RSVP.on('error', (reason, label) => {
         if (logger.ignoreError(reason)) {
           return;
         }
 
         if (typeOf(reason) === 'error') {
-          this.captureException(reason, { extra: {
-            context: this.get('unhandledPromiseErrorMessage')
-          } });
+          this.captureException(reason, {
+            extra: {
+              context: label || this.get('unhandledPromiseErrorMessage'),
+            },
+          });
         } else {
           this.captureMessage(this._extractMessage(reason), {
-            extra: { reason }
+            extra: {
+              reason,
+              context: label,
+            }
           });
         }
       });
