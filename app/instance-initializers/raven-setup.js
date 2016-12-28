@@ -1,12 +1,17 @@
 import Ember from 'ember';
 import config from '../config/environment';
 import { parseRegexErrors } from 'ember-cli-sentry/utils/parse-regex-errors';
+import Raven from 'raven';
 
 // Ember merge is deprecated as of 2.5, but we need to check for backwards
 // compatibility.
 const assign = Ember.assign || Ember.merge;
 
 export function initialize(application) {
+  // Prevent multiple configurations in FastBoot
+  if (Raven.isSetup() === true) {
+    return;
+  }
 
   if (Ember.get(config, 'sentry.development') === true) {
     if (Ember.get(config, 'sentry.debug') === true) {
@@ -38,7 +43,7 @@ export function initialize(application) {
   const service = application.lookup ? application.lookup(lookupName) : application.container.lookup(lookupName);
 
   try {
-    window.Raven.debug = debug;
+    Raven.debug = debug;
 
     // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
     const ravenConfig = assign({
@@ -48,13 +53,13 @@ export function initialize(application) {
       release: service.get(serviceReleaseProperty) || config.APP.version
     }, ravenOptions);
 
-    window.Raven.config(dsn, ravenConfig);
+    Raven.config(dsn, ravenConfig);
   } catch (e) {
     Ember.Logger.warn('Error during `sentry` initialization: ' + e);
     return;
   }
 
-  window.Raven.install();
+  Raven.install();
 
   const { globalErrorCatching = true } = config.sentry;
 
