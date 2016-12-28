@@ -12,7 +12,7 @@ This addon does:
 * Enable safe use of Raven.js whether you are in development mode or not.
 * Inject a logging service to routes, components, controllers and models to access Raven object.
 * Provide a default logger generator that should work for the vast majority of people.
-* Add an **opt-out** bower dependency to ravenjs.
+* Provide `raven-js` in browser and `raven-node` in fastboot.
 * Provide rather complete customization.
 
 This addon does **not**:
@@ -20,16 +20,15 @@ This addon does **not**:
 * Generate the logging service for you.
 * Provide a Sentry key for testing.
 
-## Important notice if you migrate from 1.x.x to 2.x
+## Important notice if you migrate from 2.x.x to 3.x
 
-Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-1.x.x-to-2.x) if you upgrade major version of ember-cli-sentry.
+Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-2.x.x-to-3.x) if you upgrade major version of ember-cli-sentry.
 
 ## Install
 
 From any ember-cli application, run `ember install ember-cli-sentry`.
 
-_Note: Since **v2.1.2**, Raven bower component is automatically included by this addon.  
-If you want to use your own packaged version or the cdn option, you'll have to opt-out by removing it from bower dependencies._
+_Note: Since **v3.0.0**, `raven-js` package is automatically included by this addon._
 
 The addon will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
 
@@ -78,21 +77,6 @@ module.exports = function(environment) {
     /* config */
 
     sentry: {
-
-      /**
-       * If Raven.js is not inlined in your code, this is
-       * where you want to define it.
-       *
-       * I recommend **not** using a build containing ember.js plugin
-       * (https://github.com/getsentry/raven-js/blob/master/plugins/ember.js)
-       * since setting `globalErrorCatching: true` will perform the same
-       * operation, but safely.
-       *
-       * @type {String}
-       * @default undefined
-       */
-      cdn: 'https://cdn.ravenjs.com/3.3.0/raven.min.js',
-
       /**
        * The only mandatory parameter.
        *
