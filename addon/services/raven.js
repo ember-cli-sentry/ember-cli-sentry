@@ -89,22 +89,22 @@ let RavenService = Service.extend({
    */
   enableGlobalErrorCatching() {
     if (this.get('isRavenUsable') && !this.get('globalErrorCatchingInitialized')) {
-      const logger = this;
       const _oldOnError = Ember.onerror;
 
-      Ember.onerror = function(error) {
-        if (logger.ignoreError(error)) {
+      Ember.onerror = (error) => {
+        if (this._ignoreError(error)) {
           return;
         }
 
-        logger.captureException(error);
+        this.captureException(error);
+        this.didCaptureException(error);
         if (typeof(_oldOnError) === 'function') {
-          _oldOnError.call(this, error);
+          _oldOnError.call(Ember, error);
         }
       };
 
       RSVP.on('error', (reason, label) => {
-        if (logger.ignoreError(reason)) {
+        if (this._ignoreError(reason)) {
           return;
         }
 
@@ -114,6 +114,7 @@ let RavenService = Service.extend({
               context: label || this.get('unhandledPromiseErrorMessage'),
             },
           });
+          this.didCaptureException(reason);
         } else {
           this.captureMessage(this._extractMessage(reason), {
             extra: {
@@ -149,6 +150,24 @@ let RavenService = Service.extend({
         return defaultMessage;
     }
   },
+
+  _ignoreError(error) {
+    // Ember 2.X seems to not catch `TransitionAborted` errors caused by regular redirects. We don't want these errors to show up in Sentry so we have to filter them ourselfs.
+    // Once the issue https://github.com/emberjs/ember.js/issues/12505 is resolved we can remove this ignored error.
+    if (error && error.name === 'TransitionAborted') { return true; }
+
+    return this.ignoreError(error);
+  },
+
+  /**
+   * Hook that allows for custom behavior when an
+   * error is captured. An example would be to open
+   * a feedback modal.
+   *
+   * @method didCaptureException
+   * @param  {Error} error
+   */
+  didCaptureException() {},
 
   /**
    * Hook that allows error filtering in global
