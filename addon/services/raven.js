@@ -171,7 +171,7 @@ let RavenService = Service.extend({
 
   /**
    * Hook that allows error filtering in global
-   * error cacthing methods.
+   * error catching methods.
    *
    * @method ignoreError
    * @param  {Error} error
