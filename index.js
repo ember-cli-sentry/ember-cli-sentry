@@ -15,7 +15,7 @@ module.exports = {
         app.import(app.bowerDirectory + '/raven-js/dist/raven.js');
       }
     } catch (e) {
-      console.log('ember-cli-sentry will not be loaded from bower installation');
+      this.ui.writeLine('ember-cli-sentry will not be loaded from bower installation');
     }
   },
 
