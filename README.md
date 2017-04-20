@@ -91,7 +91,7 @@ module.exports = function(environment) {
        * @type {String}
        * @default undefined
        */
-      cdn: 'https://cdn.ravenjs.com/3.3.0/raven.min.js',
+      cdn: 'https://cdn.ravenjs.com/3.14.2/raven.min.js',
 
       /**
        * The only mandatory parameter.
