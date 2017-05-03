@@ -12,7 +12,7 @@ This addon does:
 * Enable safe use of Raven.js whether you are in development mode or not.
 * Inject a logging service to routes, components, controllers and models to access Raven object.
 * Provide a default logger generator that should work for the vast majority of people.
-* Add an **opt-out** bower dependency to ravenjs.
+* Add an **opt-out** NPM dependency to raven-js.
 * Provide rather complete customization.
 
 This addon does **not**:
@@ -28,8 +28,8 @@ Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-c
 
 From any ember-cli application, run `ember install ember-cli-sentry`.
 
-_Note: Since **v2.1.2**, Raven bower component is automatically included by this addon.  
-If you want to use your own packaged version or the cdn option, you'll have to opt-out by removing it from bower dependencies._
+_Note: raven-js NPM package is automatically included by this addon.
+If you want to use your own packaged version or the cdn option, you'll have to opt-out by removing it from package.json dependencies._
 
 The addon will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
 
