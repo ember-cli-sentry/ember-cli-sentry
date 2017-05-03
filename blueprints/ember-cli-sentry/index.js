@@ -6,8 +6,6 @@ module.exports = {
   },
 
   afterInstall: function() {
-    return this.addBowerPackagesToProject([
-      { name: 'raven-js', target: '~3.3' }
-    ]);
+    return this.addPackageToProject('raven-js', '^3.0.0');
   }
 };

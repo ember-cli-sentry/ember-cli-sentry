@@ -59,6 +59,8 @@
     "raven"
   ],
   "dependencies": {
+    "broccoli-funnel": "^1.2.0",
+    "broccoli-merge-trees": "^2.0.0",
     "ember-cli-babel": "^5.1.6"
   },
   "ember-addon": {
