@@ -52,6 +52,14 @@ let RavenService = Service.extend({
   ignoreErrors: [],
 
   /**
+   * Ignore errors if any of the stack trace file paths matches any string or regex in this list.
+   *
+   * @property ignoreUrls
+   * @type Array
+   */
+  ignoreUrls: [],
+
+  /**
    * Utility function used internally to check if Raven object
    * can capture exceptions and messages properly.
    *
@@ -88,6 +96,8 @@ let RavenService = Service.extend({
       });
       Ember.set(ravenOptions, 'ignoreErrors', parseRegexErrors(ravenOptions.ignoreErrors));
     }
+
+    Ember.set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
 
     try {
       window.Raven.debug = debug;
