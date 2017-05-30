@@ -73,6 +73,7 @@ let RavenService = Service.extend({
       debug = true,
       includePaths = [],
       whitelistUrls = [],
+      serviceName = 'raven',
       serviceReleaseProperty = 'release',
       ravenOptions = {}
     } = config.sentry;
@@ -81,6 +82,10 @@ let RavenService = Service.extend({
     if (Ember.isPresent(ignoreErrors)) {
       Ember.set(ravenOptions, 'ignoreErrors', ignoreErrors);
     } else if (Ember.get(ravenOptions, 'ignoreErrors.length')) {
+      Ember.deprecate(`Please set "ignoreErrors" on the "${serviceName}" service instead of in the "config/environment.js" file`, false, {
+        id: 'ember-cli-sentry.ignore-errors-in-service',
+        until: '3.0.0',
+      });
       Ember.set(ravenOptions, 'ignoreErrors', parseRegexErrors(ravenOptions.ignoreErrors));
     }
 
