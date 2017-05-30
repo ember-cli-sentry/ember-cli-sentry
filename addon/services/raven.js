@@ -1,4 +1,9 @@
 import Ember from 'ember';
+import { parseRegexErrors } from 'ember-cli-sentry/utils/parse-regex-errors';
+
+// Ember merge is deprecated as of 2.5, but we need to check for backwards
+// compatibility.
+const assign = Ember.assign || Ember.merge;
 
 const {
   RSVP,
@@ -48,6 +53,51 @@ let RavenService = Service.extend({
   isRavenUsable: computed(function() {
     return !!(window.Raven && window.Raven.isSetup() === true);
   }).volatile(),
+
+  /**
+   * Setup `raven-js` with the config options.
+   * @param config
+   */
+  setup(config) {
+    const {
+      dsn,
+      environment,
+      debug = true,
+      includePaths = [],
+      whitelistUrls = [],
+      serviceReleaseProperty = 'release',
+      ravenOptions = {}
+    } = config.sentry;
+
+    if (Ember.get(ravenOptions, 'ignoreErrors.length')) {
+      Ember.set(ravenOptions, 'ignoreErrors', parseRegexErrors(ravenOptions.ignoreErrors));
+    }
+
+    try {
+      window.Raven.debug = debug;
+
+      // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
+      const ravenConfig = assign({
+        environment,
+        includePaths,
+        whitelistUrls,
+        release: this.get(serviceReleaseProperty) || config.APP.version
+      }, ravenOptions);
+
+      window.Raven.config(dsn, ravenConfig);
+    } catch (e) {
+      Ember.Logger.warn('Error during `sentry` initialization: ' + e);
+      return;
+    }
+
+    window.Raven.install();
+
+    const { globalErrorCatching = true } = config.sentry;
+
+    if (globalErrorCatching === true) {
+      this.enableGlobalErrorCatching();
+    }
+  },
 
   /**
    * Tries to have Raven capture exception, or throw it.
