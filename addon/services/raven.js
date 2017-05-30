@@ -44,6 +44,14 @@ let RavenService = Service.extend({
   unhandledPromiseErrorMessage: 'Unhandled Promise error detected',
 
   /**
+   * Ignore errors if the message matches any string or regex in this list.
+   *
+   * @property ignoreErrors
+   * @type Array
+   */
+  ignoreErrors: [],
+
+  /**
    * Utility function used internally to check if Raven object
    * can capture exceptions and messages properly.
    *
@@ -69,7 +77,10 @@ let RavenService = Service.extend({
       ravenOptions = {}
     } = config.sentry;
 
-    if (Ember.get(ravenOptions, 'ignoreErrors.length')) {
+    let ignoreErrors = this.get('ignoreErrors');
+    if (Ember.isPresent(ignoreErrors)) {
+      Ember.set(ravenOptions, 'ignoreErrors', ignoreErrors);
+    } else if (Ember.get(ravenOptions, 'ignoreErrors.length')) {
       Ember.set(ravenOptions, 'ignoreErrors', parseRegexErrors(ravenOptions.ignoreErrors));
     }
 
