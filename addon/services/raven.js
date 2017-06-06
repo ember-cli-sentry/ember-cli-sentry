@@ -1,4 +1,9 @@
 import Ember from 'ember';
+import { parseRegexErrors } from 'ember-cli-sentry/utils/parse-regex-errors';
+
+// Ember merge is deprecated as of 2.5, but we need to check for backwards
+// compatibility.
+const assign = Ember.assign || Ember.merge;
 
 const {
   RSVP,
@@ -39,6 +44,22 @@ let RavenService = Service.extend({
   unhandledPromiseErrorMessage: 'Unhandled Promise error detected',
 
   /**
+   * Ignore errors if the message matches any string or regex in this list.
+   *
+   * @property ignoreErrors
+   * @type Array
+   */
+  ignoreErrors: [],
+
+  /**
+   * Ignore errors if any of the stack trace file paths matches any string or regex in this list.
+   *
+   * @property ignoreUrls
+   * @type Array
+   */
+  ignoreUrls: [],
+
+  /**
    * Utility function used internally to check if Raven object
    * can capture exceptions and messages properly.
    *
@@ -48,6 +69,61 @@ let RavenService = Service.extend({
   isRavenUsable: computed(function() {
     return !!(window.Raven && window.Raven.isSetup() === true);
   }).volatile(),
+
+  /**
+   * Setup `raven-js` with the config options.
+   * @param config
+   */
+  setup(config) {
+    const {
+      dsn,
+      environment,
+      debug = true,
+      includePaths = [],
+      whitelistUrls = [],
+      serviceName = 'raven',
+      serviceReleaseProperty = 'release',
+      ravenOptions = {}
+    } = config.sentry;
+
+    let ignoreErrors = this.get('ignoreErrors');
+    if (Ember.isPresent(ignoreErrors)) {
+      Ember.set(ravenOptions, 'ignoreErrors', ignoreErrors);
+    } else if (Ember.get(ravenOptions, 'ignoreErrors.length')) {
+      Ember.deprecate(`Please set "ignoreErrors" on the "${serviceName}" service instead of in the "config/environment.js" file`, false, {
+        id: 'ember-cli-sentry.ignore-errors-in-service',
+        until: '3.0.0',
+      });
+      Ember.set(ravenOptions, 'ignoreErrors', parseRegexErrors(ravenOptions.ignoreErrors));
+    }
+
+    Ember.set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
+
+    try {
+      window.Raven.debug = debug;
+
+      // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
+      const ravenConfig = assign({
+        environment,
+        includePaths,
+        whitelistUrls,
+        release: this.get(serviceReleaseProperty) || config.APP.version
+      }, ravenOptions);
+
+      window.Raven.config(dsn, ravenConfig);
+    } catch (e) {
+      Ember.Logger.warn('Error during `sentry` initialization: ' + e);
+      return;
+    }
+
+    window.Raven.install();
+
+    const { globalErrorCatching = true } = config.sentry;
+
+    if (globalErrorCatching === true) {
+      this.enableGlobalErrorCatching();
+    }
+  },
 
   /**
    * Tries to have Raven capture exception, or throw it.
