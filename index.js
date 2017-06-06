@@ -21,7 +21,7 @@ module.exports = {
 
   contentFor: function(type, config) {
     if (type === 'body-footer' && config.sentry && !config.sentry.development && config.sentry.cdn) {
-      return '<script src="' + config.sentry.cdn + '"></script>';
+      return '<script async="async" src="' + config.sentry.cdn + '"></script>';
     }
   }
 };
