@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Raven from 'raven';
 import { parseRegexErrors } from 'ember-cli-sentry/utils/parse-regex-errors';
 
 // Ember merge is deprecated as of 2.5, but we need to check for backwards
@@ -21,7 +22,7 @@ const {
  * @module ember-cli-sentry/services/raven
  * @extends Ember.Service
  */
-let RavenService = Service.extend({
+export default Service.extend({
 
   /**
    * Global error catching definition status
@@ -67,7 +68,7 @@ let RavenService = Service.extend({
    * @type Ember.ComputedProperty
    */
   isRavenUsable: computed(function() {
-    return !!(window.Raven && window.Raven.isSetup() === true);
+    return Raven.isSetup() === true;
   }).volatile(),
 
   /**
@@ -100,7 +101,7 @@ let RavenService = Service.extend({
     Ember.set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
 
     try {
-      window.Raven.debug = debug;
+      Raven.debug = debug;
 
       // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
       const ravenConfig = assign({
@@ -110,13 +111,13 @@ let RavenService = Service.extend({
         release: this.get(serviceReleaseProperty) || config.APP.version
       }, ravenOptions);
 
-      window.Raven.config(dsn, ravenConfig);
+      Raven.config(dsn, ravenConfig);
     } catch (e) {
       Ember.Logger.warn('Error during `sentry` initialization: ' + e);
       return;
     }
 
-    window.Raven.install();
+    Raven.install();
 
     const { globalErrorCatching = true } = config.sentry;
 
@@ -134,7 +135,7 @@ let RavenService = Service.extend({
    */
   captureException(error) {
     if (this.get('isRavenUsable')) {
-      window.Raven.captureException(...arguments);
+      Raven.captureException(...arguments);
     } else {
       throw error;
     }
@@ -149,7 +150,7 @@ let RavenService = Service.extend({
    */
   captureMessage(message) {
     if (this.get('isRavenUsable')) {
-      window.Raven.captureMessage(...arguments);
+      Raven.captureMessage(...arguments);
     } else {
       throw new Error(message);
     }
@@ -268,7 +269,7 @@ let RavenService = Service.extend({
   callRaven(methodName, ...optional) {
     if (this.get('isRavenUsable')) {
       try {
-        return window.Raven[methodName].call(window.Raven, ...optional);
+        return Raven[methodName].call(Raven, ...optional);
       } catch (error) {
         this.captureException(error);
         return false;
@@ -276,5 +277,3 @@ let RavenService = Service.extend({
     }
   }
 });
-
-export default RavenService;
