@@ -117,6 +117,14 @@ module.exports = function(environment) {
        * @default undefined
        */
       development: false,
+      
+      /**
+       * Pass the environment to Raven.js
+       *
+       * @type {String}
+       * @default undefined
+       */
+      environment: environment,
 
       /**
        * Injects the logging service as this property.
