@@ -7,6 +7,7 @@ export default Component.extend({
   tagName: 'button',
 
   click() {
+    this.get('raven').captureBreadcrumb('Breadcrumb captured from test component');
     this.get('raven').captureMessage('Message captured from test component');
     this.get('raven').captureException(new Error('Message captured from test component'));
 
