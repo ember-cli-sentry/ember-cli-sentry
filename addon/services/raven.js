@@ -156,6 +156,23 @@ export default Service.extend({
     }
     return true;
   },
+  
+  /**
+   * Adds a message to the Raven breadcrumb trail, which will be sent
+   * when any call to captureMessage or captureException is made.
+   *
+   * @method captureBreadcrumb
+   * @param  {String} message The message to capture
+   * @return {Boolean}
+   */
+  captureBreadcrumb(message) {
+    if (this.get('isRavenUsable')) {
+      Raven.captureBreadcrumb(...arguments);
+    } else {
+      Ember.debug(message);
+    }
+    return true;
+  },
 
   /**
    * Binds functions to `Ember.onerror` and `Ember.RSVP.on('error')`.
