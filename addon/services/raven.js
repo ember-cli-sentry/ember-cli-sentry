@@ -173,7 +173,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureBreadcrumb(crumb);
     } else {
-      Ember.info(crumb);
+      Ember.debug(crumb);
     }
     return true;
   },
