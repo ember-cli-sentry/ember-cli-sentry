@@ -162,14 +162,10 @@ export default Service.extend({
    * when any call to captureMessage or captureException is made.
    *
    * @method captureBreadcrumb
-   * @param  {String} or {object} crumb The message or object to capture
+   * @param  {object} crumb The object representing the breadcrumb to capture
    * @return {Boolean}
    */
   captureBreadcrumb(crumb) {
-    if (typeOf(crumb) === 'string'){
-      crumb = {message: crumb}
-    }
-    
     if (this.get('isRavenUsable')) {
       Raven.captureBreadcrumb(crumb);
     } else {
