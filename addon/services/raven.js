@@ -169,7 +169,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureBreadcrumb(...arguments);
     } else {
-      Ember.debug(message);
+      Ember.info(message);
     }
     return true;
   },
