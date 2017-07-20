@@ -162,14 +162,18 @@ export default Service.extend({
    * when any call to captureMessage or captureException is made.
    *
    * @method captureBreadcrumb
-   * @param  {String} message The message to capture
+   * @param  {String} or {object} crumb The message or object to capture
    * @return {Boolean}
    */
-  captureBreadcrumb(message) {
+  captureBreadcrumb(crumb) {
+    if (typeOf(crumb) === 'string'){
+      crumb = {message: crumb}
+    }
+    
     if (this.get('isRavenUsable')) {
-      Raven.captureBreadcrumb(...arguments);
+      Raven.captureBreadcrumb(crumb);
     } else {
-      Ember.info(message);
+      Ember.info(crumb);
     }
     return true;
   },
