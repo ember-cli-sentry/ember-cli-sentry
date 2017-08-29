@@ -13,12 +13,9 @@ module.exports = {
   },
 
   included: function(app) {
-    // see: https://github.com/ember-cli/ember-cli/issues/3718
-    if (typeof app.import !== 'function' && app.app) {
-      app = app.app;
-    }
+    var importer = this.import ? this : findHost(this);    
 
-    app.import('vendor/raven-shim.js', {
+    importer.import('vendor/raven-shim.js', {
       type: 'vendor',
       exports: { 'raven': ['default'] }
     });
@@ -26,3 +23,14 @@ module.exports = {
     this._super.included.apply(this, arguments);
   }
 };
+
+function findHost(addon) {
+  var current = addon;
+  var app;
+
+  do {
+    app = current.app || app;
+  } while (current.parent.parent && (current = current.parent));
+
+  return app;
+}
