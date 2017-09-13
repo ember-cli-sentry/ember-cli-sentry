@@ -158,6 +158,20 @@ export default Service.extend({
   },
 
   /**
+   * Tries to have Raven capture breadcrumb, or log it.
+   *
+   * @method captureBreadcrumb
+   * @param {Object} breadcrumb The breadcrumb to capture
+   */
+  captureBreadcrumb(breadcrumb) {
+    if (this.get('isRavenUsable')) {
+      Raven.captureBreadcrumb(...arguments);
+    } else {
+      Ember.Logger.info(breadcrumb);
+    }
+  },
+
+  /**
    * Binds functions to `Ember.onerror` and `Ember.RSVP.on('error')`.
    *
    * @method enableGlobalErrorCatching
