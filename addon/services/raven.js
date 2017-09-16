@@ -68,7 +68,7 @@ export default Service.extend({
    * @type Ember.ComputedProperty
    */
   isRavenUsable: computed(function() {
-    return Raven.isSetup() === true;
+    return typeof(FastBoot) === 'undefined' && Raven.isSetup() === true;
   }).volatile(),
 
   /**
