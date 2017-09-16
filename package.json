@@ -28,7 +28,7 @@
   "dependencies": {
     "ember-cli-babel": "^6.1.0",
     "ember-cli-node-assets": "^0.1.6",
-    "raven-js": "^3.15.0"
+    "raven-js": "github:getsentry/raven-js"
   },
   "license": "MIT",
   "devDependencies": {
