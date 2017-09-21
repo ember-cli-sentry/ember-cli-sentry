@@ -18,11 +18,9 @@ export function initialize(application) {
     throw new Error('`sentry` should be configured when not in development mode.');
   }
 
-  const { serviceName = 'raven' } = config.sentry;
-  const lookupName = `service:${serviceName}`;
-  const service = application.lookup ? application.lookup(lookupName) : application.container.lookup(lookupName);
+  const container = application.lookup ? application : application.container;
 
-  service.setup(config);
+  container.lookup('service:raven').setup(config);
 }
 
 export default {
