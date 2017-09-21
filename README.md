@@ -26,30 +26,15 @@ Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-c
 
 ## Install
 
-From any ember-cli application, run `ember install ember-cli-sentry`.
-
-_Note: Since **v3.0.0**, `raven-js` package is automatically included by this addon._
-
-The addon will assume there is an available service that proxies Raven, which is not the case unless you already did the install.
-
-The easiest way of doing it is to create a service only extending `ember-cli-sentry/services/raven`:
-
-```js
-// your-app/services/custom-logger.js
-export { default } from 'ember-cli-sentry/services/raven';
+```
+ember install ember-cli-sentry`
 ```
 
-You can also use a generator `ember g logger <logger-name>`, which will generate a service called `<logger-name>` extending `ember-cli-sentry/services/raven` and exposing its methods and properties.  
-If you create the logger service that way, note that you must use the same name for the `serviceName` property.
-
-
-Now that you have a dedicated service for Raven.js, let's configure it.
+_Note: Since **v3.0.0**, `raven-js` package is automatically included by this addon._
 
 ## Configuration
 
 ### TLDR
-
-You already have a service named `raven` that extends `ember-cli-sentry/services/raven`.
 
 ```js
 // config/environment.js
@@ -118,14 +103,6 @@ module.exports = function(environment) {
        * @default true
        */
       globalErrorCatching: true,
-
-      /**
-       * Service used to interface with Raven.
-       *
-       * @type {String}
-       * @default 'raven'
-       */
-      serviceName: 'raven',
 
       /**
        * Raven.js option.
