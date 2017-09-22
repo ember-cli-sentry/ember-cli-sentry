@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import Raven from 'raven';
-import { parseRegexErrors } from 'ember-cli-sentry/utils/parse-regex-errors';
 
 // Ember merge is deprecated as of 2.5, but we need to check for backwards
 // compatibility.
@@ -89,12 +88,6 @@ export default Service.extend({
     let ignoreErrors = this.get('ignoreErrors');
     if (Ember.isPresent(ignoreErrors)) {
       Ember.set(ravenOptions, 'ignoreErrors', ignoreErrors);
-    } else if (Ember.get(ravenOptions, 'ignoreErrors.length')) {
-      Ember.deprecate(`Please set "ignoreErrors" on the "raven" service instead of in the "config/environment.js" file`, false, {
-        id: 'ember-cli-sentry.ignore-errors-in-service',
-        until: '3.0.0',
-      });
-      Ember.set(ravenOptions, 'ignoreErrors', parseRegexErrors(ravenOptions.ignoreErrors));
     }
 
     Ember.set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
