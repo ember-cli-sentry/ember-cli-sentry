@@ -27,7 +27,7 @@ Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-c
 ## Install
 
 ```
-ember install ember-cli-sentry`
+ember install ember-cli-sentry
 ```
 
 _Note: Since **v3.0.0**, `raven-js` package is automatically included by this addon._
