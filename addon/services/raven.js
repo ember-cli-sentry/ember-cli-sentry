@@ -129,8 +129,6 @@ export default Service.extend({
   captureException(error) {
     if (this.get('isRavenUsable')) {
       Raven.captureException(...arguments);
-    } else {
-      throw error;
     }
   },
 
@@ -145,7 +143,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureMessage(...arguments);
     } else {
-      throw new Error(message);
+      Ember.Logger.debug(message);
     }
     return true;
   },
