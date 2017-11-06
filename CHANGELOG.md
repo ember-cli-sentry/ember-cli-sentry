@@ -1,3 +1,8 @@
+## 3.0.0-beta.2
+
+* The obsolete _"logger"_ blueprint was removed, see #99.
+* ember-cli-sentry now works correctly when used as a nested addon, see #91.
+
 ## 2.4.2
 
 - Better message for rejected promises [#57](https://github.com/damiencaselli/ember-cli-sentry/pull/57) [@xcambar](https://github.com/xcambar)
