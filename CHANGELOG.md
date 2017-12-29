@@ -1,44 +1,215 @@
-## 3.0.0-beta.2
+# Changelog
 
-* The obsolete _"logger"_ blueprint was removed, see #99.
-* ember-cli-sentry now works correctly when used as a nested addon, see #91.
+## 3.0.0-beta.2 (2017-11-06)
 
-## 2.4.2
+#### :house: Internal
+* [#99](https://github.com/damiencaselli/ember-cli-sentry/pull/99) Remove obsolete `logger` blueprint. ([@Turbo87](https://github.com/Turbo87))
+* [#91](https://github.com/damiencaselli/ember-cli-sentry/pull/91) Update ember-cli-node-assets and use correct `.import` ([@RuslanZavacky](https://github.com/RuslanZavacky))
 
-- Better message for rejected promises [#57](https://github.com/damiencaselli/ember-cli-sentry/pull/57) [@xcambar](https://github.com/xcambar)
+#### Committers: 2
+- Ruslan Zavacky ([RuslanZavacky](https://github.com/RuslanZavacky))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-## 2.4.1
 
-- Fix compatibility issue with Ember < 2
+## 3.0.0-beta.1 (2017-10-03)
 
-## 2.4.0
+#### :boom: Breaking Change
+* [#96](https://github.com/damiencaselli/ember-cli-sentry/pull/96) Remove deprecated `ignoreErrors` support from config. ([@Turbo87](https://github.com/Turbo87))
+* [#95](https://github.com/damiencaselli/ember-cli-sentry/pull/95) Replace `serviceName` property with fixed `raven` service. ([@Turbo87](https://github.com/Turbo87))
 
-- Parse RegExp in ignoreErrors [#51](https://github.com/damiencaselli/ember-cli-sentry/pull/51) [@gabz75](https://github.com/gabz75)
+#### :rocket: Enhancement
+* [#93](https://github.com/damiencaselli/ember-cli-sentry/pull/93) add RavenService#captureBreadcrumb. ([@marcoow](https://github.com/marcoow))
+* [#94](https://github.com/damiencaselli/ember-cli-sentry/pull/94) Check for Fastboot in isRavenUsable. ([@mazondo](https://github.com/mazondo))
 
-## 2.3.4
+#### :house: Internal
+* [#88](https://github.com/damiencaselli/ember-cli-sentry/pull/88) CI: Publish tags automatically to npm. ([@Turbo87](https://github.com/Turbo87))
 
-- Upgrade ember-cli.
-- Update raven.js to 3.3.
-- Improve README.
+#### Committers: 3
+- Marco Otte-Witte ([marcoow](https://github.com/marcoow))
+- Ryan ([mazondo](https://github.com/mazondo))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
 
-## 2.3.3
 
-- Removed a possibly annoying log [#37](https://github.com/damiencaselli/ember-cli-sentry/pull/47).
+## 3.0.0-beta (2017-11-06)
 
-## 2.3.2
+#### :boom: Breaking Change
+* [#81](https://github.com/damiencaselli/ember-cli-sentry/pull/81) use `raven-js` from npm. ([@tchak](https://github.com/tchak))
 
-- Switch to Ember.assign (Ember.merge deprecated).
-- Update raven.js to 2.2.0.
+#### Committers: 5
+- Paul Chavard ([tchak](https://github.com/tchak))
 
-## 2.3.1
 
-- Fix `application.container` deprecation notice ([#34](https://github.com/damiencaselli/ember-cli-sentry/issues/34)).
+## 2.4.4 (2017-06-06)
 
-## 2.3.0
+#### :rocket: Enhancement
+* [#85](https://github.com/damiencaselli/ember-cli-sentry/pull/85) Move setup code into the service and add "ignoreUrls" support. ([@Turbo87](https://github.com/Turbo87))
+* [#75](https://github.com/damiencaselli/ember-cli-sentry/pull/75) In index.js, use ui.writeLine instead of console.log to respect --silent. ([@mattmcmanus](https://github.com/mattmcmanus))
 
-- Upgrade `ember-cli` to 2.3.0.
-- Update dummy application raven version.
+#### :memo: Documentation
+* [#74](https://github.com/damiencaselli/ember-cli-sentry/pull/74) Fix API docs typo. ([@Turbo87](https://github.com/Turbo87))
 
-## 2.2.0
+#### :house: Internal
+* [#80](https://github.com/damiencaselli/ember-cli-sentry/pull/80) Upgrade to ember-cli 2.13.1. ([@mattmcmanus](https://github.com/mattmcmanus))
 
-- Fix issue [#39](https://github.com/damiencaselli/ember-cli-sentry/issues/39) caused from previous update.
+#### Committers: 2
+- Matt McManus ([mattmcmanus](https://github.com/mattmcmanus))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+
+
+## 2.4.3 (2017-03-01)
+
+#### :rocket: Enhancement
+* [#65](https://github.com/damiencaselli/ember-cli-sentry/pull/65) Support RSVP labels. ([@seriousben](https://github.com/seriousben))
+
+#### :house: Internal
+* [#68](https://github.com/damiencaselli/ember-cli-sentry/pull/68) upgrade to ember-cli 2.10 and add yarn. ([@tchak](https://github.com/tchak))
+
+#### Committers: 2
+- Benjamin Boudreau ([seriousben](https://github.com/seriousben))
+- Paul Chavard ([tchak](https://github.com/tchak))
+
+
+## 2.4.2 (2016-09-09)
+
+#### :rocket: Enhancement
+* [#57](https://github.com/damiencaselli/ember-cli-sentry/pull/57) Better message for rejected promises. ([@xcambar](https://github.com/xcambar))
+
+#### Committers: 1
+- Xavier Cambar ([xcambar](https://github.com/xcambar))
+
+
+## 2.4.0 (2016-08-30)
+
+#### :rocket: Enhancement
+* [#51](https://github.com/damiencaselli/ember-cli-sentry/pull/51) Parse RegExp in ignoreErrors. ([@gabz75](https://github.com/gabz75))
+
+#### Committers: 1
+- Gab ([gabz75](https://github.com/gabz75))
+
+
+## 2.3.4 (2016-08-08)
+
+#### :rocket: Enhancement
+* [#54](https://github.com/damiencaselli/ember-cli-sentry/pull/54) Updates to raven.js 3.3. ([@xcambar](https://github.com/xcambar))
+
+#### Committers: 1
+- Xavier Cambar ([xcambar](https://github.com/xcambar))
+
+
+## 2.3.3 (2016-05-17)
+
+#### :rocket: Enhancement
+* [#47](https://github.com/damiencaselli/ember-cli-sentry/pull/47) Stay quiet unless debugging enabled.. ([@kkumler](https://github.com/kkumler))
+
+#### Committers: 1
+- Kris Kumler ([kkumler](https://github.com/kkumler))
+
+
+## 2.3.2 (2016-04-27)
+
+#### :rocket: Enhancement
+* [#43](https://github.com/damiencaselli/ember-cli-sentry/pull/43) Update raven.js to 2.2.0. ([@floqqi](https://github.com/floqqi))
+
+#### :house: Internal
+* [#44](https://github.com/damiencaselli/ember-cli-sentry/pull/44) switch to Ember.assign (Ember.merge deprecated). ([@jakehow](https://github.com/jakehow))
+
+#### Committers: 2
+- Florian ([floqqi](https://github.com/floqqi))
+- Jake Howerton ([jakehow](https://github.com/jakehow))
+
+
+## 2.2.0 (2016-02-29)
+
+#### :house: Internal
+* [#42](https://github.com/damiencaselli/ember-cli-sentry/pull/42) Using Ember.merge to avoid compatibility issues.. ([@kkumler](https://github.com/kkumler))
+
+#### Committers: 1
+- Kris Kumler ([kkumler](https://github.com/kkumler))
+
+
+## 2.2.0-beta.2 (2016-02-26)
+
+#### :house: Internal
+* [#42](https://github.com/damiencaselli/ember-cli-sentry/pull/42) Using Ember.merge to avoid compatibility issues.. ([@kkumler](https://github.com/kkumler))
+
+#### Committers: 1
+- Kris Kumler ([kkumler](https://github.com/kkumler))
+
+
+## 2.1.2 (2016-01-20)
+
+#### :rocket: Enhancement
+* [#38](https://github.com/damiencaselli/ember-cli-sentry/pull/38) Import the non-minified version of raven-js. ([@oquis](https://github.com/oquis))
+
+#### Committers: 1
+- Juan Miguel Rubio ([oquis](https://github.com/oquis))
+
+
+## 2.1.0 (2016-01-18)
+
+#### :rocket: Enhancement
+* [#36](https://github.com/damiencaselli/ember-cli-sentry/pull/36) Install and import raven-js dependency. ([@achambers](https://github.com/achambers))
+
+#### Committers: 1
+- Aaron Chambers ([achambers](https://github.com/achambers))
+
+
+## 2.0.0 (2015-11-26)
+
+#### :rocket: Enhancement
+* [#32](https://github.com/damiencaselli/ember-cli-sentry/pull/32) Allow passing of arbitrary options to raven.js. ([@kkumler](https://github.com/kkumler))
+* [#33](https://github.com/damiencaselli/ember-cli-sentry/pull/33) Emit warning on exception during sentry initialization. ([@kkumler](https://github.com/kkumler))
+* [#23](https://github.com/damiencaselli/ember-cli-sentry/pull/23) Allow specifying sentry release on the service. ([@dschmidt](https://github.com/dschmidt))
+
+#### :bug: Bug Fix
+* [#24](https://github.com/damiencaselli/ember-cli-sentry/pull/24) Initializer fixup for Ember 2.1. ([@dschmidt](https://github.com/dschmidt))
+
+#### Committers: 2
+- Dominik Schmidt ([dschmidt](https://github.com/dschmidt))
+- Kris Kumler ([kkumler](https://github.com/kkumler))
+
+
+## 2.0.0-beta.3 (2015-10-15)
+
+#### :rocket: Enhancement
+* [#23](https://github.com/damiencaselli/ember-cli-sentry/pull/23) Allow specifying sentry release on the service. ([@dschmidt](https://github.com/dschmidt))
+
+#### :bug: Bug Fix
+* [#24](https://github.com/damiencaselli/ember-cli-sentry/pull/24) Initializer fixup for Ember 2.1. ([@dschmidt](https://github.com/dschmidt))
+
+#### Committers: 1
+- Dominik Schmidt ([dschmidt](https://github.com/dschmidt))
+
+
+## 1.13.1 (2015-07-23)
+
+#### :rocket: Enhancement
+* [#10](https://github.com/damiencaselli/ember-cli-sentry/pull/10) Use the Ember plugin for Raven.. ([@rwjblue](https://github.com/rwjblue))
+
+#### Committers: 1
+- Robert Jackson ([rwjblue](https://github.com/rwjblue))
+
+
+## 1.0.4 (2015-06-01)
+
+#### :rocket: Enhancement
+* [#9](https://github.com/damiencaselli/ember-cli-sentry/pull/9) added release to raven config. ([@duhruh](https://github.com/duhruh))
+* [#8](https://github.com/damiencaselli/ember-cli-sentry/pull/8) Update deprecated RSVP.onerror to RSVP.on . ([@grantcupps](https://github.com/grantcupps))
+
+#### :memo: Documentation
+* [#5](https://github.com/damiencaselli/ember-cli-sentry/pull/5) Use gender neutral language in README. ([@tim-evans](https://github.com/tim-evans))
+
+#### Committers: 3
+- David Rivera ([duhruh](https://github.com/duhruh))
+- Grant Cupps ([grantcupps](https://github.com/grantcupps))
+- Tim Evans ([tim-evans](https://github.com/tim-evans))
+
+
+## v1.0.3 (2015-02-25)
+
+#### :rocket: Enhancement
+* [#3](https://github.com/damiencaselli/ember-cli-sentry/pull/3) Add bool to config so that you can disable sentry. ([@hussfelt](https://github.com/hussfelt))
+* [#4](https://github.com/damiencaselli/ember-cli-sentry/pull/4) Add option to skip CDN loading. ([@hussfelt](https://github.com/hussfelt))
+
+#### Committers: 1
+- Henrik Hussfelt ([hussfelt](https://github.com/hussfelt))
