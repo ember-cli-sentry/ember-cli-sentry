@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
-const { Controller, RSVP, run } = Ember;
+const { Controller, RSVP, run, inject: { service } } = Ember;
 
 export default Controller.extend({
+  raven: service(),
 
   actions: {
     captureSomething(something) {
