@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "ember build",
+    "changelog": "lerna-changelog",
     "start": "ember server",
     "test": "ember try:each"
   },
@@ -64,6 +65,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.13.0",
+    "lerna-changelog": "^0.7.0",
     "loader.js": "^4.2.3"
   },
   "keywords": [
@@ -78,5 +80,15 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "changelog": {
+    "repo": "damiencaselli/ember-cli-sentry",
+    "labels": {
+      "breaking": ":boom: Breaking Change",
+      "enhancement": ":rocket: Enhancement",
+      "bug": ":bug: Bug Fix",
+      "documentation": ":memo: Documentation",
+      "internal": ":house: Internal"
+    }
   }
 }
