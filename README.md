@@ -20,10 +20,6 @@ This addon does **not**:
 * Generate the logging service for you.
 * Provide a Sentry key for testing.
 
-## Important notice if you migrate from 2.x.x to 3.x
-
-Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-2.x.x-to-3.x) if you upgrade major version of ember-cli-sentry.
-
 ## Install
 
 ```
