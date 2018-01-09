@@ -7,11 +7,13 @@ export function initialize(application) {
     return;
   }
 
-  if (Ember.get(config, 'sentry.development') === true) {
+  if ('development' === config.environment) {
+    if (Ember.get(config, 'sentry.development') !== true) {
+      return;
+    }
     if (Ember.get(config, 'sentry.debug') === true) {
       Ember.Logger.info('`sentry` is configured for development mode.');
     }
-    return;
   }
 
   if (!config.sentry) {
