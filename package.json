@@ -40,8 +40,8 @@
   },
   "dependencies": {
     "ember-cli-babel": "^6.11.0",
-    "ember-cli-node-assets": "^0.2.2",
-    "raven-js": "^3.22.1"
+    "raven-js": "^3.22.1",
+    "resolve": "^1.5.0"
   },
   "license": "MIT",
   "devDependencies": {
