@@ -1,16 +1,11 @@
+import { assign } from '@ember/polyfills';
+import { computed, get, set } from '@ember/object';
+import { isPresent, typeOf } from '@ember/utils';
+import { warn } from '@ember/debug';
+import Service from '@ember/service';
 import Ember from 'ember';
+import { on as rsvpOn } from 'rsvp';
 import Raven from 'raven';
-
-// Ember merge is deprecated as of 2.5, but we need to check for backwards
-// compatibility.
-const assign = Ember.assign || Ember.merge;
-
-const {
-  RSVP,
-  Service,
-  computed,
-  typeOf
-} = Ember;
 
 /**
  * Default available logger service.
@@ -85,12 +80,12 @@ export default Service.extend({
       ravenOptions = {}
     } = config.sentry;
 
-    let ignoreErrors = this.get('ignoreErrors');
-    if (Ember.isPresent(ignoreErrors)) {
-      Ember.set(ravenOptions, 'ignoreErrors', ignoreErrors);
+    let ignoreErrors = get(this, 'ignoreErrors');
+    if (isPresent(ignoreErrors)) {
+      set(ravenOptions, 'ignoreErrors', ignoreErrors);
     }
 
-    Ember.set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
+    set(ravenOptions, 'ignoreUrls', get(this, 'ignoreUrls'));
 
     try {
       Raven.debug = debug;
@@ -100,12 +95,14 @@ export default Service.extend({
         environment,
         includePaths,
         whitelistUrls,
-        release: this.get(serviceReleaseProperty) || config.APP.version
+        release: get(this, serviceReleaseProperty) || config.APP.version
       }, ravenOptions);
 
       Raven.config(dsn, ravenConfig);
     } catch (e) {
-      Ember.Logger.warn('Error during `sentry` initialization: ' + e);
+      warn('Error during `sentry` initialization: ' + e, {
+        id: 'ember-cli-sentry.initialization-error'
+      });
       return;
     }
 
@@ -126,7 +123,7 @@ export default Service.extend({
    * @throws {Error} An error if Raven cannot capture the exception
    */
   captureException(error) {
-    if (this.get('isRavenUsable')) {
+    if (get(this, 'isRavenUsable')) {
       Raven.captureException(...arguments);
     } else {
       throw error;
@@ -141,7 +138,7 @@ export default Service.extend({
    * @return {Boolean}
    */
   captureMessage(message) {
-    if (this.get('isRavenUsable')) {
+    if (get(this, 'isRavenUsable')) {
       Raven.captureMessage(...arguments);
     } else {
       throw new Error(message);
@@ -156,10 +153,11 @@ export default Service.extend({
    * @param {Object} breadcrumb The breadcrumb to capture
    */
   captureBreadcrumb(breadcrumb) {
-    if (this.get('isRavenUsable')) {
+    if (get(this, 'isRavenUsable')) {
       Raven.captureBreadcrumb(...arguments);
     } else {
-      Ember.Logger.info(breadcrumb);
+      // eslint-disable-next-line no-console
+      console.info(breadcrumb);
     }
   },
 
@@ -171,7 +169,7 @@ export default Service.extend({
    * @see http://emberjs.com/api/#event_onerror
    */
   enableGlobalErrorCatching() {
-    if (this.get('isRavenUsable') && !this.get('globalErrorCatchingInitialized')) {
+    if (get(this, 'isRavenUsable') && !get(this, 'globalErrorCatchingInitialized')) {
       const _oldOnError = Ember.onerror;
 
       Ember.onerror = (error) => {
@@ -186,7 +184,7 @@ export default Service.extend({
         }
       };
 
-      RSVP.on('error', (reason, label) => {
+      rsvpOn('error', (reason, label) => {
         if (this._ignoreError(reason)) {
           return;
         }
@@ -194,7 +192,7 @@ export default Service.extend({
         if (typeOf(reason) === 'error') {
           this.captureException(reason, {
             extra: {
-              context: label || this.get('unhandledPromiseErrorMessage'),
+              context: label || get(this, 'unhandledPromiseErrorMessage'),
             },
           });
           this.didCaptureException(reason);
@@ -223,7 +221,7 @@ export default Service.extend({
    * @return {String}
    */
   _extractMessage(reason) {
-    const defaultMessage = this.get('unhandledPromiseErrorMessage');
+    const defaultMessage = get(this, 'unhandledPromiseErrorMessage');
     switch (typeOf(reason)) {
       case 'string':
         return reason;
@@ -273,7 +271,7 @@ export default Service.extend({
    * @throws {Error} If an error is captured and thrown
    */
   callRaven(methodName, ...optional) {
-    if (this.get('isRavenUsable')) {
+    if (get(this, 'isRavenUsable')) {
       try {
         return Raven[methodName].call(Raven, ...optional);
       } catch (error) {

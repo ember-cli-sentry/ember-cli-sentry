@@ -1,19 +1,21 @@
-import Ember from 'ember';
-
-const { Controller, RSVP, run, inject: { service } } = Ember;
+import Controller from '@ember/controller';
+import { get } from '@ember/object';
+import { run } from '@ember/runloop';
+import { Promise } from 'rsvp';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   raven: service(),
 
   actions: {
     captureSomething(something) {
-      this.get('raven').captureBreadcrumb({
+      get(this, 'raven').captureBreadcrumb({
         message: 'Capturing a breadcrumb',
         category: 'testing',
         level: 'debug',
       });
-      this.get('raven').captureMessage(`"${something}" captured from ApplicationController`);
-      this.get('raven').captureException(new Error('Exception captured from ApplicationController'));
+      get(this, 'raven').captureMessage(`"${something}" captured from ApplicationController`);
+      get(this, 'raven').captureException(new Error('Exception captured from ApplicationController'));
     },
 
     navigateToNonExistingRoute() {
@@ -21,7 +23,7 @@ export default Controller.extend({
     },
 
     callDelayedError() {
-      new RSVP.Promise(function(resolve, reject) {
+      new Promise(function(resolve, reject) {
         run.later(null, function() {
           reject('delayed error');
         }, 2000);
