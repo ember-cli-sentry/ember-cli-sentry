@@ -1,19 +1,16 @@
-/* eslint-env node */
 'use strict';
+const resolve = require('resolve');
 
 module.exports = {
   name: 'ember-cli-sentry',
 
-  options: {
-    nodeAssets: {
-      'raven-js': {
-        import: [{ path: 'dist/raven.js' }]
-      }
-    }
-  },
+  included(/* app */) {
+    const importer = this.import ? this : findHost(this);
 
-  included: function(app) {
-    var importer = this.import ? this : findHost(this);    
+    importer.import(
+      resolve.sync('raven-js/dist/raven.js', { basedir: this.project.root }),
+      { type: 'vendor' }
+    );
 
     importer.import('vendor/raven-shim.js', {
       type: 'vendor',

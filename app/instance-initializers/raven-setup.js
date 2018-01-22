@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { get } from '@ember/object';
 import Raven from 'raven';
 import config from '../config/environment';
 
@@ -7,9 +7,10 @@ export function initialize(application) {
     return;
   }
 
-  if (Ember.get(config, 'sentry.development') === true) {
-    if (Ember.get(config, 'sentry.debug') === true) {
-      Ember.Logger.info('`sentry` is configured for development mode.');
+  if (get(config, 'sentry.development') === true) {
+    if (get(config, 'sentry.debug') === true) {
+      // eslint-disable-next-line no-console
+      console.info('`sentry` is configured for development mode.');
     }
     return;
   }
