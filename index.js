@@ -1,4 +1,3 @@
-/* eslint-env node */
 'use strict';
 
 module.exports = {
@@ -12,8 +11,8 @@ module.exports = {
     }
   },
 
-  included: function(app) {
-    var importer = this.import ? this : findHost(this);    
+  included(/* app */) {
+    var importer = this.import ? this : findHost(this);
 
     importer.import('vendor/raven-shim.js', {
       type: 'vendor',
