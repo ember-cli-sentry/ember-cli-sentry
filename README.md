@@ -84,14 +84,6 @@ module.exports = function(environment) {
       development: false,
 
       /**
-       * Injects the logging service as this property.
-       *
-       * @type {String}
-       * @default 'raven'
-       */
-      exposedPropertyName: 'raven',
-
-      /**
        * If set to true, addon will try to have Ember.onerror
        * and Ember.RSVP.on('error') captured by Raven.
        *
