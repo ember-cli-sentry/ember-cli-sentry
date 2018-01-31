@@ -17,7 +17,7 @@ This addon does:
 
 This addon does **not**:
 
-* Generate the logging service for you.
+* Generate the logging service for you. (You will need to generate one yourself)
 * Provide a Sentry key for testing.
 
 ## Install
@@ -134,6 +134,10 @@ To allow Ravenjs to work properly, you need to add a couple of thing to the cont
 ## Meaningless stack traces?
 
 See [this issue](https://github.com/damiencaselli/ember-cli-sentry/issues/28).
+
+## Error: Attempting to inject an unknown injection: `service:raven` 
+
+You need to have a `logger:raven` service in your app. You can either generate one using `ember g logger raven`. See [this issue](https://github.com/damiencaselli/ember-cli-sentry/issues/40)
 
 ## Example
 
