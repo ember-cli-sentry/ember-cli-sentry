@@ -1,3 +1,5 @@
+/* eslint-disable ember/avoid-leaking-state-in-ember-objects */
+
 import Ember from 'ember';
 import { assign as _assign, merge } from '@ember/polyfills';
 import Service from '@ember/service';
