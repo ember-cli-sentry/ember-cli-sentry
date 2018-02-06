@@ -1,6 +1,6 @@
-import Ember from 'ember';
-
-const { Route, on, inject: { service } } = Ember;
+import Route from '@ember/routing/route';
+import { on } from '@ember/object/evented';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
   raven: service(),
