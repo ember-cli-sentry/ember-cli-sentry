@@ -28,7 +28,7 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' cdn.ravenjs.com",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
       'img-src': "data: app.getsentry.com"
     }
   };
