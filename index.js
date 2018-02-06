@@ -1,32 +1,36 @@
-/* eslint-env node */
 'use strict';
+
+/* eslint-env node */
+
+const path = require('path');
+const resolve = require('resolve');
+const Funnel = require('broccoli-funnel');
+const MergeTrees = require('broccoli-merge-trees');
 
 module.exports = {
   name: 'ember-cli-sentry',
 
-  options: {
-    nodeAssets: {
-      'raven-js': {
-        import: [{ path: 'dist/raven.js' }]
-      }
-    }
+  included() {
+    this._super.included.apply(this, arguments);
+
+    let host = this.import ? this : findHost(this);
+    host.import('vendor/raven-shim.js');
+    host.import('vendor/raven.js');
   },
 
-  included: function(app) {
-    var importer = this.import ? this : findHost(this);    
-
-    importer.import('vendor/raven-shim.js', {
-      type: 'vendor',
-      exports: { 'raven': ['default'] }
+  treeForVendor(vendorTree) {
+    let ravenPath = path.dirname(resolve.sync('raven-js/dist/raven.js'));
+    let ravenTree = new Funnel(ravenPath, {
+      files: ['raven.js'],
     });
 
-    this._super.included.apply(this, arguments);
-  }
+    return new MergeTrees([vendorTree, ravenTree]);
+  },
 };
 
 function findHost(addon) {
-  var current = addon;
-  var app;
+  let current = addon;
+  let app;
 
   do {
     app = current.app || app;
