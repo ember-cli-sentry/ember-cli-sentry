@@ -1,6 +1,8 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { run } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 
-const { Controller, RSVP, run, inject: { service } } = Ember;
+import RSVP from 'rsvp';
 
 export default Controller.extend({
   raven: service(),

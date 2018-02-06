@@ -1,16 +1,15 @@
 import Ember from 'ember';
+import { assign as _assign, merge } from '@ember/polyfills';
+import Service from '@ember/service';
+import { computed, set } from '@ember/object';
+import { typeOf, isPresent } from '@ember/utils';
+
+import RSVP from 'rsvp';
 import Raven from 'raven';
 
 // Ember merge is deprecated as of 2.5, but we need to check for backwards
 // compatibility.
-const assign = Ember.assign || Ember.merge;
-
-const {
-  RSVP,
-  Service,
-  computed,
-  typeOf
-} = Ember;
+const assign = _assign || merge;
 
 /**
  * Default available logger service.
@@ -86,11 +85,11 @@ export default Service.extend({
     } = config.sentry;
 
     let ignoreErrors = this.get('ignoreErrors');
-    if (Ember.isPresent(ignoreErrors)) {
-      Ember.set(ravenOptions, 'ignoreErrors', ignoreErrors);
+    if (isPresent(ignoreErrors)) {
+      set(ravenOptions, 'ignoreErrors', ignoreErrors);
     }
 
-    Ember.set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
+    set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
 
     try {
       Raven.debug = debug;

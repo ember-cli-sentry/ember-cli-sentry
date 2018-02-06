@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import { get } from '@ember/object';
+
 import Raven from 'raven';
 
 export function initialize(container, config) {
@@ -6,8 +8,8 @@ export function initialize(container, config) {
     return;
   }
 
-  if (Ember.get(config, 'sentry.development') === true) {
-    if (Ember.get(config, 'sentry.debug') === true) {
+  if (get(config, 'sentry.development') === true) {
+    if (get(config, 'sentry.debug') === true) {
       Ember.Logger.info('`sentry` is configured for development mode.');
     }
     return;
