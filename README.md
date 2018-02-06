@@ -126,7 +126,7 @@ module.exports = function(environment) {
 To allow Ravenjs to work properly, you need to add a couple of thing to the content security policy rules:
 
 ```
-'script-src': "'self' 'unsafe-inline' 'unsafe-eval' cdn.ravenjs.com",
+'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
 'img-src': "data: app.getsentry.com",
 'connect-src': "'self' app.getsentry.com"
 ```
