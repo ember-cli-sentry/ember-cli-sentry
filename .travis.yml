@@ -43,9 +43,7 @@ install:
 
 script:
   - yarn run lint:js
-  # Usually, it's ok to finish the test scenario without reverting
-  #  to the addon's original dependency state, skipping "cleanup".
-  - yarn ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+  - yarn ember try:one $EMBER_TRY_SCENARIO
 
 before_deploy:
   - yarn global add auto-dist-tag
@@ -56,6 +54,7 @@ deploy:
   email: info@simplabs.com
   api_key:
     secure: BkvjZ5VYVEF7JHlitiA9TVZGfYdNTLohV5C/ZtMjb4ylIlXH9VftjyTbKybfUpodfK13Qr/Oif/xVd8yKxyZl0R+kmB94pMm89J+q4jl2WB0lOJ5Qk4iXMOd5tIZTiLyIvggkVDf7y+YBIFFmbPxozJgOVG2DRXsYezafDuL4sg=
+  skip_cleanup: true
   on:
     tags: true
     repo: damiencaselli/ember-cli-sentry
