@@ -1,5 +1,44 @@
 # Changelog
 
+## 3.0.0 (2018-03-11)
+
+#### :boom: Breaking Change
+* [#81](https://github.com/damiencaselli/ember-cli-sentry/pull/81) use `raven-js` from npm. ([@tchak](https://github.com/tchak))
+* [#95](https://github.com/damiencaselli/ember-cli-sentry/pull/95) Replace `serviceName` property with fixed `raven` service. ([@Turbo87](https://github.com/Turbo87))
+* [#96](https://github.com/damiencaselli/ember-cli-sentry/pull/96) Remove deprecated `ignoreErrors` support from config. ([@Turbo87](https://github.com/Turbo87))
+* [#110](https://github.com/damiencaselli/ember-cli-sentry/pull/110) Remove implicit `raven` service injection. ([@Turbo87](https://github.com/Turbo87))
+
+#### :rocket: Enhancement
+* [#124](https://github.com/damiencaselli/ember-cli-sentry/pull/124) Remove `ember-cli-node-assets` dependency. ([@Turbo87](https://github.com/Turbo87))
+* [#93](https://github.com/damiencaselli/ember-cli-sentry/pull/93) add RavenService#captureBreadcrumb. ([@marcoow](https://github.com/marcoow))
+* [#94](https://github.com/damiencaselli/ember-cli-sentry/pull/94) Check for Fastboot in isRavenUsable. ([@mazondo](https://github.com/mazondo))
+
+#### :memo: Documentation
+* [#123](https://github.com/damiencaselli/ember-cli-sentry/pull/123) Remove `cdn.ravenjs.com` from CSP suggestion. ([@Turbo87](https://github.com/Turbo87))
+* [#111](https://github.com/damiencaselli/ember-cli-sentry/pull/111) README: Remove broken link. ([@Turbo87](https://github.com/Turbo87))
+* [#108](https://github.com/damiencaselli/ember-cli-sentry/pull/108) Generate CHANGELOG using `lerna-changelog`. ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#127](https://github.com/damiencaselli/ember-cli-sentry/pull/127) CI: Adjust `skip_cleanup` behavior to fix `auto-dist-tag`. ([@Turbo87](https://github.com/Turbo87))
+* [#126](https://github.com/damiencaselli/ember-cli-sentry/pull/126) Update Ember CLI to v2.18. ([@Turbo87](https://github.com/Turbo87))
+* [#125](https://github.com/damiencaselli/ember-cli-sentry/pull/125) Use "RFC 176 Imports". ([@Turbo87](https://github.com/Turbo87))
+* [#121](https://github.com/damiencaselli/ember-cli-sentry/pull/121) CI: Use Node.js 4.x. ([@Turbo87](https://github.com/Turbo87))
+* [#119](https://github.com/damiencaselli/ember-cli-sentry/pull/119) Upgrade `ember-cli-babel` to ^6.6.0. ([@buschtoens](https://github.com/buschtoens))
+* [#118](https://github.com/damiencaselli/ember-cli-sentry/pull/118) testem: Use headless Chrome to run tests. ([@Turbo87](https://github.com/Turbo87))
+* [#109](https://github.com/damiencaselli/ember-cli-sentry/pull/109) Revert "Add jsdoc dependencies for doc generation". ([@Turbo87](https://github.com/Turbo87))
+* [#99](https://github.com/damiencaselli/ember-cli-sentry/pull/99) Remove obsolete `logger` blueprint. ([@Turbo87](https://github.com/Turbo87))
+* [#91](https://github.com/damiencaselli/ember-cli-sentry/pull/91) Update ember-cli-node-assets and use correct `.import` ([@RuslanZavacky](https://github.com/RuslanZavacky))
+* [#88](https://github.com/damiencaselli/ember-cli-sentry/pull/88) CI: Publish tags automatically to npm. ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 2
+- Jan Buschtöns ([buschtoens](https://github.com/buschtoens))
+- Ruslan Zavacky ([RuslanZavacky](https://github.com/RuslanZavacky))
+- Tobias Bieniek ([Turbo87](https://github.com/Turbo87))
+- Marco Otte-Witte ([marcoow](https://github.com/marcoow))
+- Ryan ([mazondo](https://github.com/mazondo))
+- Paul Chavard ([tchak](https://github.com/tchak))
+
+
 ## 3.0.0-beta.3 (2018-02-06)
 
 #### :boom: Breaking Change
