@@ -109,7 +109,15 @@ module.exports = function(environment) {
       whitelistUrls: [],
 
       /**
-       * Options to pass directly to Raven.js. Note: whitelistUrls and
+       * Raven.js option.
+       *
+       * @type {Array}
+       * @default []
+       */
+      ignoreUrls: [],
+
+      /**
+       * Options to pass directly to Raven.js. Note: whitelistUrls, ignoreUrls and
        * includePaths in this will take precedence
        * over the above.
        *
