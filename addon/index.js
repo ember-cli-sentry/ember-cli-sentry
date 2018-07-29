@@ -10,7 +10,7 @@ export function initialize(container, config) {
 
   if (get(config, 'sentry.development') === true) {
     if (get(config, 'sentry.debug') === true) {
-      Ember.Logger.info('`sentry` is configured for development mode.');
+      console.info('`sentry` is configured for development mode.');
     }
     return;
   }
