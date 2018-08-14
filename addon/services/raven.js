@@ -1,5 +1,3 @@
-/* eslint-disable ember/avoid-leaking-state-in-ember-objects */
-
 import Ember from 'ember';
 import { assign as _assign, merge } from '@ember/polyfills';
 import Service from '@ember/service';
@@ -50,7 +48,9 @@ export default Service.extend({
    * @property ignoreErrors
    * @type Array
    */
-  ignoreErrors: [],
+  ignoreErrors: computed(function() {
+    return [];
+  }),
 
   /**
    * Ignore errors if any of the stack trace file paths matches any string or regex in this list.
@@ -58,7 +58,9 @@ export default Service.extend({
    * @property ignoreUrls
    * @type Array
    */
-  ignoreUrls: [],
+  ignoreUrls: computed(function() {
+    return [];
+  }),
 
   /**
    * Utility function used internally to check if Raven object
@@ -106,7 +108,7 @@ export default Service.extend({
 
       Raven.config(dsn, ravenConfig);
     } catch (e) {
-      Ember.Logger.warn('Error during `sentry` initialization: ' + e);
+      console.warn('Error during `sentry` initialization: ' + e); // eslint-disable-line no-console
       return;
     }
 
@@ -160,7 +162,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureBreadcrumb(...arguments);
     } else {
-      Ember.Logger.info(breadcrumb);
+      console.info(breadcrumb); // eslint-disable-line no-console
     }
   },
 
