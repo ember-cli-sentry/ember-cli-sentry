@@ -106,7 +106,7 @@ export default Service.extend({
 
       Raven.config(dsn, ravenConfig);
     } catch (e) {
-      Ember.Logger.warn('Error during `sentry` initialization: ' + e);
+      console.warn('Error during `sentry` initialization: ' + e);
       return;
     }
 
@@ -160,7 +160,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureBreadcrumb(...arguments);
     } else {
-      Ember.Logger.info(breadcrumb);
+      console.info(breadcrumb);
     }
   },
 
