@@ -20,6 +20,11 @@ This addon does **not**:
 * Generate the logging service for you.
 * Provide a Sentry key for testing.
 
+## Compatibility
+
+- Node.js 6 or higher is required to use this addon
+
+
 ## Install
 
 ```
