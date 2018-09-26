@@ -130,7 +130,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureException(...arguments);
     } else {
-      throw error;
+      console.error(error);
     }
   },
 
@@ -145,7 +145,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureMessage(...arguments);
     } else {
-      throw new Error(message);
+      console.info(message);
     }
     return true;
   },
