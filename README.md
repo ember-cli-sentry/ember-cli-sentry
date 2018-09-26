@@ -23,6 +23,7 @@ This addon does **not**:
 ## Compatibility
 
 - Node.js 6 or higher is required to use this addon
+- Ember CLI 2.13 or higher is required to use this addon
 
 
 ## Install
