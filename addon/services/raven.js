@@ -130,9 +130,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureException(...arguments);
     } else {
-      /* eslint-disable no-console */
       console.error(error);
-      /* eslint-enable no-console */
     }
   },
 
@@ -147,9 +145,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureMessage(...arguments);
     } else {
-      /* eslint-disable no-console */
       console.info(message);
-      /* eslint-enable no-console */
     }
     return true;
   },
