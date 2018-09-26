@@ -43,7 +43,7 @@
     "broccoli-funnel": "^2.0.1",
     "broccoli-merge-trees": "^2.0.0",
     "ember-cli-babel": "^6.6.0",
-    "raven-js": "^3.15.0",
+    "raven-js": "^3.27.0",
     "resolve": "^1.5.0"
   },
   "license": "MIT",
