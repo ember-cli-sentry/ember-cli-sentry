@@ -3748,17 +3748,12 @@ ember-resolver@^5.0.1:
     ember-cli-version-checker "^2.0.0"
     resolve "^1.3.3"
 
-ember-rfc176-data@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/ember-rfc176-data/-/ember-rfc176-data-0.2.7.tgz#bd355bc9b473e08096b518784170a23388bc973b"
-  integrity sha512-pJE2w+sI22UDsYmudI4nCp3WcImpUzXwe9qHfpOcEu3yM/HD1nGpDRt6kZD0KUnDmqkLeik/nYyzEwN/NU6xxA==
-
 ember-rfc176-data@^0.3.0, ember-rfc176-data@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/ember-rfc176-data/-/ember-rfc176-data-0.3.1.tgz#6a5a4b8b82ec3af34f3010965fa96b936ca94519"
   integrity sha512-u+W5rUvYO7xyKJjiPuCM7bIAvFyPwPTJ66fOZz1xuCv3AyReI9Oev5oOADOO6YJZk+vEn0xWiZ9N6zSf8WU7Fg==
 
-ember-rfc176-data@^0.3.5:
+ember-rfc176-data@^0.3.3, ember-rfc176-data@^0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/ember-rfc176-data/-/ember-rfc176-data-0.3.5.tgz#f630e550572c81a5e5c7220f864c0f06eee9e977"
   integrity sha512-5NfL1iTkIQDYs16/IZ7/jWCEglNsUrigLelBkBMsNcib9T3XzQwmhhVTjoSsk66s57LmWJ1bQu+2c1CAyYCV7A==
@@ -3970,12 +3965,11 @@ escape-string-regexp@^1.0.0, escape-string-regexp@^1.0.2, escape-string-regexp@^
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
 eslint-plugin-ember@^5.0.0:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-5.0.3.tgz#9f5e2048ab3ddc1548d4d17bf318cf1bb5cf37f1"
-  integrity sha512-wPq2N96YQR2/Ob2LfuLQV8BEotHXxiFcuBiHikN8P+2VGzxBeuydafXy/pExuTsU2RHfPiSgyBHavKGy1DYdrQ==
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-5.2.0.tgz#fa436e0497dfc01d1d38608229cd616e7c5b6067"
+  integrity sha1-+kNuBJffwB0dOGCCKc1hbnxbYGc=
   dependencies:
-    ember-rfc176-data "^0.2.7"
-    require-folder-tree "^1.4.5"
+    ember-rfc176-data "^0.3.3"
     snake-case "^2.1.0"
 
 eslint-plugin-node@^5.2.1:
@@ -6495,11 +6489,6 @@ lodash.values@~2.3.0:
   dependencies:
     lodash.keys "~2.3.0"
 
-lodash@3.8.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.8.0.tgz#376eb98bdcd9382a9365c33c4cb8250de1325b91"
-  integrity sha1-N265i9zZOCqTZcM8TLglDeEyW5E=
-
 lodash@^4.14.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
@@ -8111,13 +8100,6 @@ require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
   integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
-
-require-folder-tree@^1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/require-folder-tree/-/require-folder-tree-1.4.5.tgz#dfe553cbab98cc88e1c56a3f2f358f06ef85bcb0"
-  integrity sha1-3+VTy6uYzIjhxWo/LzWPBu+FvLA=
-  dependencies:
-    lodash "3.8.0"
 
 require-main-filename@^1.0.1:
   version "1.0.1"
