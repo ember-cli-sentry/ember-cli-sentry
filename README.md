@@ -4,7 +4,7 @@ ember-cli-sentry
 An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
 
-## Compatibility
+## Requirements
 
 - Node.js 6 or higher is required to use this addon
 - Ember CLI 2.13 or higher is required to use this addon
