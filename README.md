@@ -129,10 +129,6 @@ See [this issue](https://github.com/damiencaselli/ember-cli-sentry/issues/28).
 
 The dummy application in tests is a working example with a couple of logging here and there, and a default logger.
 
-## Dependencies
-
-[Raven.js](https://github.com/getsentry/raven-js)
-
 ## Licence
 
 [MIT](https://raw.githubusercontent.com/damiencaselli/ember-cli-sentry/master/LICENSE.md)
