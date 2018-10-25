@@ -18,8 +18,6 @@ Install
 ember install ember-cli-sentry
 ```
 
-_Note: Since **v3.0.0**, `raven-js` package is automatically included by this addon._
-
 
 Usage
 -------------------------------------------------------------------------------
