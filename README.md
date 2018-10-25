@@ -5,21 +5,6 @@ An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
 Docs are available [here](http://damiencaselli.github.io/ember-cli-sentry/).
 
-## What it does (and does not)
-
-This addon does:
-
-* Enable safe use of Raven.js whether you are in development mode or not.
-* Inject a logging service to routes, components, controllers and models to access Raven object.
-* Provide a default logger generator that should work for the vast majority of people.
-* Provide `raven-js` in browser.
-* Provide rather complete customization.
-
-This addon does **not**:
-
-* Generate the logging service for you.
-* Provide a Sentry key for testing.
-
 ## Compatibility
 
 - Node.js 6 or higher is required to use this addon
