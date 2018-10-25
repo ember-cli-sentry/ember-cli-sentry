@@ -1,5 +1,42 @@
 # Changelog
 
+## 4.0.0 (2018-10-25)
+
+#### :boom: Breaking Change
+
+For most users this release should work just the same as before, as long as you
+use Node 6 or above and Ember CLI 2.13 or above.
+
+* [#153](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/153) Update `ember-cli-babel` to v7.1.2 ([@Turbo87](https://github.com/Turbo87))
+* [#97](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/97) Do not throw error/message when raven disabled ([@RobinDaugherty](https://github.com/RobinDaugherty))
+* [#142](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/142) Drop node v4 support ([@dashdashzako](https://github.com/dashdashzako))
+
+#### :rocket: Enhancement
+* [#140](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/140) Mark raven-shim as an ES module ([@ef4](https://github.com/ef4))
+* [#149](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/149) Update `raven-js` to v3.27.0 ([@Turbo87](https://github.com/Turbo87))
+* [#97](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/97) Do not throw error/message when raven disabled ([@RobinDaugherty](https://github.com/RobinDaugherty))
+* [#141](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/141) Use console rather than Ember.Logger ([@dashdashzako](https://github.com/dashdashzako))
+
+#### :memo: Documentation
+* [#179](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/179) Update README ([@Turbo87](https://github.com/Turbo87))
+* [#147](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/147) README: Add `Compatibility` section ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#151](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/151) Update `ember-cli` to v3.4.3 ([@Turbo87](https://github.com/Turbo87))
+* [#152](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/152) Remove unused `ember-cli-release` dev dependency ([@Turbo87](https://github.com/Turbo87))
+* [#150](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/150) Remove unused `ember-cli-app-version` dev dependency ([@Turbo87](https://github.com/Turbo87))
+* [#148](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/148) Update `broccoli-merge-trees` to v3.0.1 ([@Turbo87](https://github.com/Turbo87))
+* [#145](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/145) Update `lerna-changelog` to v0.8.0 ([@Turbo87](https://github.com/Turbo87))
+* [#146](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/146) yarn: Add `integrity` hashes ([@Turbo87](https://github.com/Turbo87))
+* [#143](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/143) Fix CI builds ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 4
+- Edward Faulkner ([@ef4](https://github.com/ef4))
+- Robin Daugherty ([@RobinDaugherty](https://github.com/RobinDaugherty))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+- [@dashdashzako](https://github.com/dashdashzako)
+
+
 ## 3.0.0 (2018-03-11)
 
 #### :boom: Breaking Change
