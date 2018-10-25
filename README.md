@@ -3,7 +3,6 @@ ember-cli-sentry
 
 An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
-Docs are available [here](http://damiencaselli.github.io/ember-cli-sentry/).
 
 ## Compatibility
 
