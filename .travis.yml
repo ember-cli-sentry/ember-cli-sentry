@@ -4,9 +4,6 @@ node_js:
   # so that your addon works for all apps
   - "6"
 
-sudo: false
-dist: trusty
-
 addons:
   chrome: stable
 
