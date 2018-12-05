@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-sentry",
   "description": "ember-cli-sentry doc",
-  "url": "https://github.com/damiencaselli/ember-cli-sentry/",
+  "url": "https://github.com/ember-cli-sentry/ember-cli-sentry/",
   "options": {
     "paths": [
       "addon",
