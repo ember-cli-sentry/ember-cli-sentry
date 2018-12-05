@@ -125,7 +125,7 @@ To allow Ravenjs to work properly, you need to add a couple of thing to the cont
 
 ### Meaningless stack traces?
 
-See [this issue](https://github.com/damiencaselli/ember-cli-sentry/issues/28).
+See [this issue](https://github.com/ember-cli-sentry/ember-cli-sentry/issues/28).
 
 ### Example
 
@@ -135,4 +135,4 @@ The dummy application in tests is a working example with a couple of logging her
 Licence
 -------------------------------------------------------------------------------
 
-[MIT](https://raw.githubusercontent.com/damiencaselli/ember-cli-sentry/master/LICENSE.md)
+[MIT](https://raw.githubusercontent.com/ember-cli-sentry/ember-cli-sentry/master/LICENSE.md)
