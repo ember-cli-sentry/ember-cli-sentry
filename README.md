@@ -74,6 +74,14 @@ module.exports = function(environment) {
        * @default undefined
        */
       development: false,
+      
+      /**
+       * Pass the environment to Raven.js
+       *
+       * @type {String}
+       * @default undefined
+       */
+      environment: environment,
 
       /**
        * If set to true, addon will try to have Ember.onerror
