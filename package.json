@@ -34,10 +34,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/damiencaselli/ember-cli-sentry.git"
+    "url": "https://github.com/ember-cli-sentry/ember-cli-sentry.git"
   },
   "bugs": {
-    "url": "https://github.com/damiencaselli/ember-cli-sentry/issues"
+    "url": "https://github.com/ember-cli-sentry/ember-cli-sentry/issues"
   },
   "dependencies": {
     "broccoli-funnel": "^2.0.1",
@@ -84,7 +84,7 @@
     "configPath": "tests/dummy/config"
   },
   "changelog": {
-    "repo": "damiencaselli/ember-cli-sentry",
+    "repo": "ember-cli-sentry/ember-cli-sentry",
     "labels": {
       "breaking": ":boom: Breaking Change",
       "enhancement": ":rocket: Enhancement",

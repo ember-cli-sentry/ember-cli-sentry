@@ -54,4 +54,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    repo: damiencaselli/ember-cli-sentry
+    repo: ember-cli-sentry/ember-cli-sentry
