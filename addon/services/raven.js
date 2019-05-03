@@ -212,7 +212,7 @@ export default Service.extend({
 
           extraParamsContext.extra = assign(this.extraParams.extra, extraParamsContext.extra);
 
-          this.captureException(reason, extraParams);
+          this.captureException(reason, extraParamsContext);
           this.didCaptureException(reason);
         } else {
           let extraParamsContext = {
