@@ -61,6 +61,31 @@ export default Service.extend({
   ignoreUrls: [],
 
   /**
+   * this auxiliar property when populated, sends extra information 
+   * when an error is sent to the sentry
+   * 
+   * @property extraParams
+   * @type Object
+   * @private
+   */
+  extraParams: { extra: {} },
+
+  /**
+   * In addition to the structured context that Sentry understands,
+   * you can send arbitrary object with key/value pairs of data which 
+   * will be stored alongside the event
+   * 
+   * Example: { "character_name": "Mighty Fighter" }
+   * 
+   * @property extraParams
+   * @type Object
+   * @private
+   */
+  setExtraParams(value) {
+    this.set('extraParams', { extra: value });
+  },
+
+  /**
    * Utility function used internally to check if Raven object
    * can capture exceptions and messages properly.
    *
@@ -180,7 +205,7 @@ export default Service.extend({
           return;
         }
 
-        this.captureException(error);
+        this.captureException(error, this.extraParams);
         this.didCaptureException(error);
         if (typeof(_oldOnError) === 'function') {
           _oldOnError.call(Ember, error);
@@ -193,19 +218,27 @@ export default Service.extend({
         }
 
         if (typeOf(reason) === 'error') {
-          this.captureException(reason, {
+          let extraParamsContext = {
             extra: {
               context: label || this.get('unhandledPromiseErrorMessage'),
-            },
-          });
+            }
+          };
+
+          extraParamsContext.extra = assign(this.extraParams.extra, extraParamsContext.extra);
+
+          this.captureException(reason, extraParams);
           this.didCaptureException(reason);
         } else {
-          this.captureMessage(this._extractMessage(reason), {
+          let extraParamsContext = {
             extra: {
               reason,
               context: label,
             }
-          });
+          };
+
+          extraParamsContext.extra = assign(this.extraParams.extra, extraParamsContext.extra);
+
+          this.captureMessage(this._extractMessage(reason), extraParamsContext);
         }
       });
 
