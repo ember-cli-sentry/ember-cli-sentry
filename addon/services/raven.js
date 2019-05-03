@@ -164,13 +164,14 @@ export default Service.extend({
    *
    * @method captureMessage
    * @param  {String} message The message to capture
+   * @param  {String} extraParams Extra Params
    * @return {Boolean}
    */
-  captureMessage(message) {
+  captureMessage(message, extraParams) {
     if (this.get('isRavenUsable')) {
       Raven.captureMessage(...arguments);
     } else {
-      console.info(message);
+      console.info(message, extraParams);
     }
     return true;
   },
