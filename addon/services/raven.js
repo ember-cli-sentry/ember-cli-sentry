@@ -3,7 +3,7 @@
 import Ember from 'ember';
 import { assign as _assign, merge } from '@ember/polyfills';
 import Service from '@ember/service';
-import { computed, set } from '@ember/object';
+import { set } from '@ember/object';
 import { typeOf, isPresent } from '@ember/utils';
 
 import RSVP from 'rsvp';
@@ -67,9 +67,9 @@ export default Service.extend({
    * @property isRavenUsable
    * @type Ember.ComputedProperty
    */
-  isRavenUsable: computed(function() {
+  get isRavenUsable() {
     return typeof(FastBoot) === 'undefined' && Raven.isSetup() === true;
-  }).volatile(),
+  },
 
   /**
    * Setup `raven-js` with the config options.
