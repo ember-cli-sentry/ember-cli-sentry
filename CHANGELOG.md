@@ -1,5 +1,24 @@
 # Changelog
 
+## 4.1.0 (2019-05-03)
+
+#### :rocket: Enhancement
+* [#186](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/186) Use native getter instead of volatile cp ([@mydea](https://github.com/mydea))
+
+#### :memo: Documentation
+* [#87](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/87) Add documentation around environment passing ([@ghedamat](https://github.com/ghedamat))
+
+#### :house: Internal
+* [#181](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/181) Update github repository name accross the new repository ([@dashdashzako](https://github.com/dashdashzako))
+* [#180](https://github.com/ember-cli-sentry/ember-cli-sentry/pull/180) TravisCI: Remove deprecated `sudo: false` option ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 4
+- Francesco Novy ([@mydea](https://github.com/mydea))
+- Mattia Gheda ([@ghedamat](https://github.com/ghedamat))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+- [@dashdashzako](https://github.com/dashdashzako)
+
+
 ## 4.0.0 (2018-10-25)
 
 #### :boom: Breaking Change
