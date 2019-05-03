@@ -71,21 +71,6 @@ export default Service.extend({
   extraParams: { extra: {} },
 
   /**
-   * In addition to the structured context that Sentry understands,
-   * you can send arbitrary object with key/value pairs of data which 
-   * will be stored alongside the event
-   * 
-   * Example: { "character_name": "Mighty Fighter" }
-   * 
-   * @property extraParams
-   * @type Object
-   * @private
-   */
-  setExtraParams(value) {
-    this.set('extraParams', { extra: value });
-  },
-
-  /**
    * Utility function used internally to check if Raven object
    * can capture exceptions and messages properly.
    *
@@ -275,6 +260,18 @@ export default Service.extend({
     if (error && error.name === 'TransitionAborted') { return true; }
 
     return this.ignoreError(error);
+  },
+
+  /**
+   * In addition to the structured context that Sentry understands,
+   * you can send arbitrary object with key/value pairs of data which 
+   * will be stored alongside the event
+   * 
+   * @method setExtraParams
+   * @param  {Object} extra Example: { "character_name": "Mighty Fighter" }
+   */
+  setExtraParams(extra) {
+    this.set('extraParams', { extra });
   },
 
   /**
