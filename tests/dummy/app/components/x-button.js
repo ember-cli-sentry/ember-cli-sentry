@@ -1,8 +1,8 @@
-import Ember from 'ember';
-
-const { Component } = Ember;
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
+  raven: service(),
 
   tagName: 'button',
 
@@ -10,6 +10,6 @@ export default Component.extend({
     this.get('raven').captureMessage('Message captured from test component');
     this.get('raven').captureException(new Error('Message captured from test component'));
 
-    this.attrs.afterClick('x-button clicked');
+    this.afterClick('x-button clicked');
   }
 });

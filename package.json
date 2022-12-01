@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-sentry",
-  "version": "3.0.0-beta.1",
+  "version": "4.1.0",
   "description": "ember-cli addon adding Sentry support",
   "author": "Damien Caselli <damien.caselli@gmail.com>",
   "contributors": [
@@ -27,43 +27,47 @@
   },
   "scripts": {
     "build": "ember build",
-    "start": "ember server",
+    "changelog": "lerna-changelog",
+    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
+    "start": "ember serve",
     "test": "ember try:each"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/damiencaselli/ember-cli-sentry.git"
+    "url": "https://github.com/ember-cli-sentry/ember-cli-sentry.git"
   },
   "bugs": {
-    "url": "https://github.com/damiencaselli/ember-cli-sentry/issues"
+    "url": "https://github.com/ember-cli-sentry/ember-cli-sentry/issues"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.1.0",
-    "ember-cli-node-assets": "^0.1.6",
-    "raven-js": "^3.15.0"
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^3.0.1",
+    "ember-cli-babel": "^7.1.2",
+    "raven-js": "^3.27.0",
+    "resolve": "^1.5.0"
   },
   "license": "MIT",
   "devDependencies": {
-    "broccoli-asset-rev": "^2.4.5",
-    "ember-cli-app-version": "^1.0.0",
-    "ember-cli-release": "^0.2.9",
-    "ember-cli": "2.13.1",
-    "ember-cli-dependency-checker": "^1.3.0",
-    "ember-cli-eslint": "^3.0.0",
-    "ember-cli-htmlbars": "^1.1.1",
-    "ember-cli-htmlbars-inline-precompile": "^0.4.0",
-    "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.0.0",
-    "ember-cli-shims": "^1.1.0",
+    "broccoli-asset-rev": "^3.0.0",
+    "ember-cli": "~3.5.0",
+    "ember-cli-dependency-checker": "^3.0.0",
+    "ember-cli-eslint": "^4.2.1",
+    "ember-cli-htmlbars": "^3.0.1",
+    "ember-cli-htmlbars-inline-precompile": "^2.1.0",
+    "ember-cli-inject-live-reload": "^2.0.1",
+    "ember-cli-qunit": "^4.1.1",
+    "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-uglify": "^1.2.0",
-    "ember-disable-prototype-extensions": "^1.1.0",
-    "ink-docstrap": "^1.3.0",
-    "jsdoc": "^3.4.1",
+    "ember-cli-uglify": "^2.0.0",
+    "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
-    "ember-load-initializers": "^1.0.0",
-    "ember-resolver": "^4.0.0",
-    "ember-source": "~2.13.0",
+    "ember-load-initializers": "^2.0.0",
+    "ember-resolver": "^5.0.1",
+    "ember-source": "~3.12.0",
+    "ember-try": "^1.1.0",
+    "eslint-plugin-ember": "^6.4.1",
+    "eslint-plugin-node": "^7.0.1",
+    "lerna-changelog": "^0.8.0",
     "loader.js": "^4.2.3"
   },
   "keywords": [
@@ -74,9 +78,19 @@
     "raven"
   ],
   "engines": {
-    "node": ">= 4"
+    "node": "6.* || 8.* || >= 10.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "changelog": {
+    "repo": "ember-cli-sentry/ember-cli-sentry",
+    "labels": {
+      "breaking": ":boom: Breaking Change",
+      "enhancement": ":rocket: Enhancement",
+      "bug": ":bug: Bug Fix",
+      "documentation": ":memo: Documentation",
+      "internal": ":house: Internal"
+    }
   }
 }

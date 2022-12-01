@@ -1,16 +1,17 @@
+/* eslint-disable ember/avoid-leaking-state-in-ember-objects */
+
 import Ember from 'ember';
+import { assign as _assign, merge } from '@ember/polyfills';
+import Service from '@ember/service';
+import { set } from '@ember/object';
+import { typeOf, isPresent } from '@ember/utils';
+
+import RSVP from 'rsvp';
 import Raven from 'raven';
 
 // Ember merge is deprecated as of 2.5, but we need to check for backwards
 // compatibility.
-const assign = Ember.assign || Ember.merge;
-
-const {
-  RSVP,
-  Service,
-  computed,
-  typeOf
-} = Ember;
+const assign = _assign || merge;
 
 /**
  * Default available logger service.
@@ -66,9 +67,9 @@ export default Service.extend({
    * @property isRavenUsable
    * @type Ember.ComputedProperty
    */
-  isRavenUsable: computed(function() {
+  get isRavenUsable() {
     return typeof(FastBoot) === 'undefined' && Raven.isSetup() === true;
-  }).volatile(),
+  },
 
   /**
    * Setup `raven-js` with the config options.
@@ -86,11 +87,11 @@ export default Service.extend({
     } = config.sentry;
 
     let ignoreErrors = this.get('ignoreErrors');
-    if (Ember.isPresent(ignoreErrors)) {
-      Ember.set(ravenOptions, 'ignoreErrors', ignoreErrors);
+    if (isPresent(ignoreErrors)) {
+      set(ravenOptions, 'ignoreErrors', ignoreErrors);
     }
 
-    Ember.set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
+    set(ravenOptions, 'ignoreUrls', this.get('ignoreUrls'));
 
     try {
       Raven.debug = debug;
@@ -105,7 +106,7 @@ export default Service.extend({
 
       Raven.config(dsn, ravenConfig);
     } catch (e) {
-      Ember.Logger.warn('Error during `sentry` initialization: ' + e);
+      console.warn('Error during `sentry` initialization: ' + e);
       return;
     }
 
@@ -131,7 +132,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureException(...arguments);
     } else {
-      throw error;
+      console.error(error);
     }
   },
 
@@ -146,7 +147,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureMessage(...arguments);
     } else {
-      throw new Error(message);
+      console.info(message);
     }
     return true;
   },
@@ -161,7 +162,7 @@ export default Service.extend({
     if (this.get('isRavenUsable')) {
       Raven.captureBreadcrumb(...arguments);
     } else {
-      Ember.Logger.info(breadcrumb);
+      console.info(breadcrumb);
     }
   },
 

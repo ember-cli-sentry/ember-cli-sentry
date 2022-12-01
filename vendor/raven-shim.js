@@ -1,7 +1,9 @@
-define('raven', [], function() {
+define('raven', ['exports'], function(exports) {
   "use strict";
 
-  var Raven = window.Raven.noConflict();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  return { 'default': Raven };
+  exports.default = window.Raven.noConflict();
 });

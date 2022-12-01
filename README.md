@@ -1,38 +1,34 @@
 ember-cli-sentry
-================
+===============================================================================
 
 An ember-cli addon adding [Sentry](https://www.getsentry.com) support.
 
-Docs are available [here](http://damiencaselli.github.io/ember-cli-sentry/).
+---
 
-## What it does (and does not)
+**⚠️ this repository isn't maintained any longer ⚠️**
 
-This addon does:
+➡️ See [the official Sentry's Ember addon documentation](https://docs.sentry.io/platforms/javascript/guides/ember/).
 
-* Enable safe use of Raven.js whether you are in development mode or not.
-* Inject a logging service to routes, components, controllers and models to access Raven object.
-* Provide a default logger generator that should work for the vast majority of people.
-* Provide `raven-js` in browser.
-* Provide rather complete customization.
+---
 
-This addon does **not**:
 
-* Generate the logging service for you.
-* Provide a Sentry key for testing.
+Requirements
+-------------------------------------------------------------------------------
 
-## Important notice if you migrate from 2.x.x to 3.x
+- Node.js 6 or higher is required to use this addon
+- Ember CLI 2.13 or higher is required to use this addon
 
-Please have a look at [this wiki entry](https://github.com/damiencaselli/ember-cli-sentry/wiki/Migration-from-2.x.x-to-3.x) if you upgrade major version of ember-cli-sentry.
 
-## Install
+Install
+-------------------------------------------------------------------------------
 
 ```
 ember install ember-cli-sentry
 ```
 
-_Note: Since **v3.0.0**, `raven-js` package is automatically included by this addon._
 
-## Configuration
+Usage
+-------------------------------------------------------------------------------
 
 ### TLDR
 
@@ -86,14 +82,14 @@ module.exports = function(environment) {
        * @default undefined
        */
       development: false,
-
+      
       /**
-       * Injects the logging service as this property.
+       * Pass the environment to Raven.js
        *
        * @type {String}
-       * @default 'raven'
+       * @default undefined
        */
-      exposedPropertyName: 'raven',
+      environment: environment,
 
       /**
        * If set to true, addon will try to have Ember.onerror
@@ -133,28 +129,26 @@ module.exports = function(environment) {
 }
 ```
 
-## Content Security Policy
+### Content Security Policy
 
 To allow Ravenjs to work properly, you need to add a couple of thing to the content security policy rules:
 
 ```
-'script-src': "'self' 'unsafe-inline' 'unsafe-eval' cdn.ravenjs.com",
+'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
 'img-src': "data: app.getsentry.com",
 'connect-src': "'self' app.getsentry.com"
 ```
 
-## Meaningless stack traces?
+### Meaningless stack traces?
 
-See [this issue](https://github.com/damiencaselli/ember-cli-sentry/issues/28).
+See [this issue](https://github.com/ember-cli-sentry/ember-cli-sentry/issues/28).
 
-## Example
+### Example
 
 The dummy application in tests is a working example with a couple of logging here and there, and a default logger.
 
-## Dependencies
 
-[Raven.js](https://github.com/getsentry/raven-js)
+Licence
+-------------------------------------------------------------------------------
 
-## Licence
-
-[MIT](https://raw.githubusercontent.com/damiencaselli/ember-cli-sentry/master/LICENSE.md)
+[MIT](https://raw.githubusercontent.com/ember-cli-sentry/ember-cli-sentry/master/LICENSE.md)
